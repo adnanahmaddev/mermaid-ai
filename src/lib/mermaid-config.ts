@@ -13,13 +13,13 @@ export function initializeMermaid(isDarkMode: boolean = true) {
     themeVariables: isDarkMode
       ? {
           darkMode: true,
-          background: '#0f172a',
-          primaryColor: '#6366f1',
+          background: '#000000',
+          primaryColor: '#2563eb',
           primaryTextColor: '#f8fafc',
-          primaryBorderColor: '#4f46e5',
+          primaryBorderColor: '#3b82f6',
           lineColor: '#94a3b8',
-          secondaryColor: '#ec4899',
-          tertiaryColor: '#1e293b'
+          secondaryColor: '#60a5fa',
+          tertiaryColor: '#1e1e1e'
         }
       : {
           darkMode: false,

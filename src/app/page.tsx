@@ -1,11 +1,23 @@
 'use client';
 
 import React, { useState } from 'react';
+import dynamic from 'next/dynamic';
 import { Header } from '@/components/Navbar/Header';
-import { CodeEditor } from '@/components/Editor/CodeEditor';
 import { DiagramCanvas } from '@/components/Canvas/DiagramCanvas';
 import { AiPromptPanel } from '@/components/AiSidebar/AiPromptPanel';
 import { DIAGRAM_TEMPLATES, DiagramTemplate } from '@/lib/templates';
+
+const CodeEditor = dynamic(
+  () => import('@/components/Editor/CodeEditor').then((mod) => mod.CodeEditor),
+  {
+    ssr: false,
+    loading: () => (
+      <div style={{ flex: 1, background: 'var(--bg-primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text-muted)', fontSize: '0.85rem' }}>
+        Loading Editor...
+      </div>
+    )
+  }
+);
 
 export default function Home() {
   const [diagramCode, setDiagramCode] = useState<string>(DIAGRAM_TEMPLATES[0].code);
@@ -83,7 +95,7 @@ export default function Home() {
       canvas.height = img.height * 2 || 1080;
       const ctx = canvas.getContext('2d');
       if (ctx) {
-        ctx.fillStyle = isDarkMode ? '#0b0f19' : '#ffffff';
+        ctx.fillStyle = isDarkMode ? '#000000' : '#ffffff';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
         const pngUrl = canvas.toDataURL('image/png');

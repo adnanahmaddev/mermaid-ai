@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react';
 import { 
-  Sparkles, 
   Download, 
   Copy, 
   Check, 
@@ -23,6 +22,27 @@ interface HeaderProps {
   onToggleTheme: () => void;
   diagramCode: string;
 }
+
+const PencilSparkles: React.FC<{ size?: number }> = ({ size = 19 }) => (
+  <svg 
+    width={size} 
+    height={size} 
+    viewBox="0 0 24 24" 
+    fill="none" 
+    stroke="currentColor" 
+    strokeWidth="2" 
+    strokeLinecap="round" 
+    strokeLinejoin="round"
+  >
+    {/* Pencil Body */}
+    <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z" />
+    <path d="m15 5 4 4" />
+    {/* Sparkle 1 (Top Left) */}
+    <path d="M4.5 4L5 2.5L6.5 2L5 1.5L4.5 0L4 1.5L2.5 2L4 2.5Z" fill="currentColor" stroke="none" />
+    {/* Sparkle 2 (Bottom Right Accent) */}
+    <path d="M19.5 17L20 15.5L21.5 15L20 14.5L19.5 13L19 14.5L17.5 15L19 15.5Z" fill="currentColor" stroke="none" />
+  </svg>
+);
 
 export const Header: React.FC<HeaderProps> = ({
   onSelectTemplate,
@@ -46,7 +66,7 @@ export const Header: React.FC<HeaderProps> = ({
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
         <div 
           style={{
-            background: 'linear-gradient(135deg, #6366f1, #a855f7)',
+            background: 'linear-gradient(135deg, #2563eb, #60a5fa)',
             borderRadius: '10px',
             width: '36px',
             height: '36px',
@@ -54,18 +74,30 @@ export const Header: React.FC<HeaderProps> = ({
             alignItems: 'center',
             justifyContent: 'center',
             color: 'white',
-            boxShadow: '0 0 15px rgba(99, 102, 241, 0.4)'
+            boxShadow: '0 0 15px rgba(37, 99, 235, 0.4)'
           }}
         >
-          <Sparkles size={20} />
+          <PencilSparkles size={19} />
         </div>
-        <div>
-          <h1 style={{ fontSize: '1.1rem', fontWeight: 700, letterSpacing: '-0.02em', margin: 0 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+          <h1 style={{ fontSize: '1.15rem', fontWeight: 700, letterSpacing: '-0.02em', margin: 0, color: 'var(--text-primary)' }}>
             Mermaid<span style={{ color: 'var(--accent-primary)' }}>AI</span>
           </h1>
-          <p style={{ fontSize: '0.72rem', color: 'var(--text-muted)', margin: 0 }}>
-            AI Diagram Studio
-          </p>
+          <span 
+            style={{ 
+              fontSize: '0.68rem', 
+              fontWeight: 600, 
+              letterSpacing: '0.04em',
+              textTransform: 'uppercase',
+              background: 'var(--bg-tertiary)', 
+              color: 'var(--text-muted)', 
+              padding: '0.15rem 0.5rem', 
+              borderRadius: '9999px',
+              border: '1px solid var(--border-color)'
+            }}
+          >
+            Studio
+          </span>
         </div>
       </div>
 
