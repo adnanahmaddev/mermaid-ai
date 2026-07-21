@@ -193,6 +193,42 @@ body {
   max-height: 85vh;
 }
 
+/* Gantt Chart SVG Text Legibility & Contrast Overrides */
+[data-theme="dark"] .canvas-viewport svg .sectionTitle,
+.dark .canvas-viewport svg .sectionTitle {
+  fill: #f1f5f9 !important;
+  font-weight: 600;
+}
+
+[data-theme="dark"] .canvas-viewport svg .grid text,
+.dark .canvas-viewport svg .grid text,
+[data-theme="dark"] .canvas-viewport svg .tick text,
+.dark .canvas-viewport svg .tick text {
+  fill: #94a3b8 !important;
+}
+
+/* Ensure text inside task bars with light/medium backgrounds is crisp dark text */
+.canvas-viewport svg .taskText,
+.canvas-viewport svg .taskText0,
+.canvas-viewport svg .taskText1,
+.canvas-viewport svg .taskText2,
+.canvas-viewport svg .taskText3,
+.canvas-viewport svg .doneText0,
+.canvas-viewport svg .doneText1,
+.canvas-viewport svg .doneText2,
+.canvas-viewport svg .doneText3 {
+  fill: #0f172a !important;
+  font-weight: 600;
+}
+
+/* Ensure text outside task bars is bright white in dark mode */
+[data-theme="dark"] .canvas-viewport svg .taskTextOutsideRight,
+.dark .canvas-viewport svg .taskTextOutsideRight,
+[data-theme="dark"] .canvas-viewport svg .taskTextOutsideLeft,
+.dark .canvas-viewport svg .taskTextOutsideLeft {
+  fill: #f8fafc !important;
+}
+
 /* Floating AI Copilot Action Bar Over Canvas */
 .floating-ai-bar {
   position: absolute;
