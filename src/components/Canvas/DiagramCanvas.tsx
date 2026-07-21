@@ -7,7 +7,9 @@ import {
   RotateCcw, 
   AlertCircle, 
   Wand2,
-  PanelLeft
+  PanelLeft,
+  Loader2,
+  Sparkles
 } from 'lucide-react';
 import { renderMermaidSvg, parseMermaidCode } from '@/lib/mermaid-config';
 
@@ -18,6 +20,7 @@ interface DiagramCanvasProps {
   onSvgRendered?: (svgString: string) => void;
   isEditorOpen?: boolean;
   onToggleEditor?: () => void;
+  isAiLoading?: boolean;
   children?: React.ReactNode;
 }
 
@@ -28,6 +31,7 @@ export const DiagramCanvas: React.FC<DiagramCanvasProps> = ({
   onSvgRendered,
   isEditorOpen = true,
   onToggleEditor,
+  isAiLoading = false,
   children
 }) => {
   const [svgContent, setSvgContent] = useState<string>('');
@@ -149,10 +153,21 @@ export const DiagramCanvas: React.FC<DiagramCanvasProps> = ({
           </div>
           <button 
             onClick={() => onFixWithAi(errorMessage)} 
+            disabled={isAiLoading}
             className="btn-primary"
             style={{ padding: '0.35rem 0.75rem', fontSize: '0.8rem', flexShrink: 0 }}
           >
-            <Wand2 size={14} /> Fix with AI
+            {isAiLoading ? (
+              <>
+                <Loader2 size={14} className="animate-spin" />
+                <span>Fixing...</span>
+              </>
+            ) : (
+              <>
+                <Wand2 size={14} />
+                <span>Fix with AI</span>
+              </>
+            )}
           </button>
         </div>
       )}
@@ -166,7 +181,16 @@ export const DiagramCanvas: React.FC<DiagramCanvasProps> = ({
         onMouseUp={handleMouseUp}
         onMouseLeave={handleMouseUp}
       >
-        {isRendering && (
+        {isAiLoading && (
+          <div className="canvas-ai-loading-overlay">
+            <div className="canvas-ai-loading-card">
+              <Sparkles size={18} className="animate-spin" style={{ color: 'var(--accent-primary)' }} />
+              <span>AI Copilot is generating diagram...</span>
+            </div>
+          </div>
+        )}
+
+        {isRendering && !isAiLoading && (
           <div style={{ position: 'absolute', top: '4.5rem', right: '1.25rem', color: 'var(--text-muted)', fontSize: '0.8rem', display: 'flex', alignItems: 'center', gap: '0.4rem', background: 'var(--bg-glass)', backdropFilter: 'blur(12px)', padding: '0.35rem 0.75rem', borderRadius: 'var(--radius-sm)', zIndex: 15, boxShadow: 'var(--shadow-sm)' }}>
             <div style={{ width: '12px', height: '12px', border: '2px solid var(--accent-primary)', borderTopColor: 'transparent', borderRadius: '50%', animation: 'spin 0.8s linear infinite' }} />
             Rendering...

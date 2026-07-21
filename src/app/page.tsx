@@ -211,6 +211,7 @@ export default function Home() {
           onSvgRendered={setLastSvgContent}
           isEditorOpen={isEditorOpen}
           onToggleEditor={() => setIsEditorOpen(!isEditorOpen)}
+          isAiLoading={isAiLoading}
         >
           <AiPromptPanel
             onGenerate={(prompt) => handleAiGenerate(prompt)}

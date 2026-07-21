@@ -2,6 +2,21 @@ import mermaid from 'mermaid';
 
 let isInitialized = false;
 
+export function autoFixMermaidCode(code: string): string {
+  if (!code) return code;
+  let fixed = code;
+
+  // 1. Ensure keywords like 'section', 'subgraph' start on a new line if concatenated without newline
+  fixed = fixed.replace(/([^\n])\s*\b(section|subgraph)\b/gi, '$1\n$2');
+
+  // 2. Auto-quote unquoted square bracket node labels containing special characters like (), /, :, &, #
+  fixed = fixed.replace(/\b([A-Za-z0-9_\-]+)\[([^\]"\n]*[\(\)\/\:\&\#]+[^\]"\n]*)\]/g, (_, id, label) => {
+    return `${id}["${label}"]`;
+  });
+
+  return fixed;
+}
+
 export function initializeMermaid(isDarkMode: boolean = true) {
   if (typeof window === 'undefined') return;
 
@@ -40,7 +55,8 @@ export async function parseMermaidCode(code: string): Promise<{ valid: boolean; 
   if (typeof window === 'undefined') return { valid: false, error: 'SSR environment' };
   
   try {
-    await mermaid.parse(code);
+    const sanitizedCode = autoFixMermaidCode(code);
+    await mermaid.parse(sanitizedCode);
     return { valid: true };
   } catch (err: unknown) {
     const errorMessage = err instanceof Error ? err.message : String(err);
@@ -57,9 +73,10 @@ export async function renderMermaidSvg(
 
   try {
     initializeMermaid(isDarkMode);
+    const sanitizedCode = autoFixMermaidCode(code);
     // Ensure clean rendering container ID
     const cleanId = `mermaid-render-${id.replace(/[^a-zA-Z0-9]/g, '')}`;
-    const { svg } = await mermaid.render(cleanId, code);
+    const { svg } = await mermaid.render(cleanId, sanitizedCode);
     return { svg };
   } catch (err: unknown) {
     const errorMessage = err instanceof Error ? err.message : String(err);

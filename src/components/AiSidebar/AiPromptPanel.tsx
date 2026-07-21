@@ -57,9 +57,9 @@ export const AiPromptPanel: React.FC<AiPromptPanelProps> = ({
         </div>
       )}
 
-      <form onSubmit={handleSubmit} className="floating-ai-input-wrapper">
+      <form onSubmit={handleSubmit} className={`floating-ai-input-wrapper ${isLoading ? 'ai-loading' : ''}`}>
         <div className="floating-ai-icon" title="AI Diagram Copilot">
-          <Sparkles size={16} style={{ color: 'var(--accent-primary)' }} />
+          <Sparkles size={16} className={isLoading ? 'animate-spin' : ''} style={{ color: 'var(--accent-primary)' }} />
         </div>
         <input
           type="text"

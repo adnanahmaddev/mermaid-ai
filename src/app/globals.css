@@ -229,6 +229,11 @@ body {
   box-shadow: 0 0 0 2px var(--accent-glow), 0 10px 30px rgba(0, 0, 0, 0.4);
 }
 
+.floating-ai-input-wrapper.ai-loading {
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 15px var(--accent-glow), 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
 .floating-ai-icon {
   display: flex;
   align-items: center;
@@ -377,5 +382,48 @@ body {
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(6px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin {
+  animation: spin 0.9s linear infinite;
+}
+
+/* Canvas AI Generation Loading Overlay */
+.canvas-ai-loading-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 18;
+  animation: fadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.light .canvas-ai-loading-overlay {
+  background: rgba(248, 250, 252, 0.55);
+}
+
+.canvas-ai-loading-card {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  background: var(--bg-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-active);
+  padding: 0.9rem 1.6rem;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-glow), 0 12px 36px rgba(0, 0, 0, 0.4);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-primary);
 }
 
