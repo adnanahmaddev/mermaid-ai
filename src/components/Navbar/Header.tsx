@@ -9,7 +9,9 @@ import {
   Moon, 
   Layout, 
   Code2, 
-  FileCode2 
+  FileCode2,
+  PanelLeft,
+  PanelLeftClose
 } from 'lucide-react';
 import { DIAGRAM_TEMPLATES, DiagramTemplate } from '@/lib/templates';
 
@@ -21,6 +23,8 @@ interface HeaderProps {
   isDarkMode: boolean;
   onToggleTheme: () => void;
   diagramCode: string;
+  isEditorOpen: boolean;
+  onToggleEditor: () => void;
 }
 
 const PencilSparkles: React.FC<{ size?: number }> = ({ size = 19 }) => (
@@ -51,6 +55,8 @@ export const Header: React.FC<HeaderProps> = ({
   onCopyCode,
   isDarkMode,
   onToggleTheme,
+  isEditorOpen,
+  onToggleEditor,
 }) => {
   const [copied, setCopied] = useState(false);
   const [showExportMenu, setShowExportMenu] = useState(false);
@@ -64,24 +70,32 @@ export const Header: React.FC<HeaderProps> = ({
   return (
     <header className="header-bar">
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+        <button
+          onClick={onToggleEditor}
+          className="btn-icon"
+          title={isEditorOpen ? "Collapse Editor" : "Expand Editor"}
+          style={{ background: isEditorOpen ? 'var(--bg-tertiary)' : 'transparent' }}
+        >
+          {isEditorOpen ? <PanelLeftClose size={18} /> : <PanelLeft size={18} />}
+        </button>
+
         <div 
           style={{
-            background: 'linear-gradient(135deg, #2563eb, #60a5fa)',
+            background: 'var(--accent-primary)',
             borderRadius: '10px',
             width: '36px',
             height: '36px',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            color: 'white',
-            boxShadow: '0 0 15px rgba(37, 99, 235, 0.4)'
+            color: 'white'
           }}
         >
           <PencilSparkles size={19} />
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
           <h1 style={{ fontSize: '1.15rem', fontWeight: 700, letterSpacing: '-0.02em', margin: 0, color: 'var(--text-primary)' }}>
-            Mermaid<span style={{ color: 'var(--accent-primary)' }}>AI</span>
+            MermaidAI
           </h1>
           <span 
             style={{ 

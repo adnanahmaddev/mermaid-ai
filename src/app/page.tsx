@@ -24,6 +24,7 @@ export default function Home() {
   const [isDarkMode, setIsDarkMode] = useState<boolean>(true);
   const [isAiLoading, setIsAiLoading] = useState<boolean>(false);
   const [lastSvgContent, setLastSvgContent] = useState<string>('');
+  const [isEditorOpen, setIsEditorOpen] = useState<boolean>(true);
 
   // Template Loader
   const handleSelectTemplate = (template: DiagramTemplate) => {
@@ -119,11 +120,13 @@ export default function Home() {
         isDarkMode={isDarkMode}
         onToggleTheme={() => setIsDarkMode(!isDarkMode)}
         diagramCode={diagramCode}
+        isEditorOpen={isEditorOpen}
+        onToggleEditor={() => setIsEditorOpen(!isEditorOpen)}
       />
 
-      <main className="workspace-grid">
-        {/* Left Side: Monaco Editor & AI Copilot Panel */}
-        <div className="left-panel">
+      <main className={`workspace-grid ${!isEditorOpen ? 'editor-collapsed' : ''}`}>
+        {/* Left Side: Monaco Markdown Code Editor */}
+        <div className={`left-panel ${!isEditorOpen ? 'collapsed' : ''}`}>
           <div style={{ padding: '0.5rem 1rem', background: 'var(--bg-secondary)', borderBottom: '1px solid var(--border-color)', fontSize: '0.75rem', fontWeight: 600, color: 'var(--text-muted)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <span>MERMAID MARKDOWN EDITOR</span>
             <span>LIVE SYNC ON</span>
@@ -133,20 +136,23 @@ export default function Home() {
             onChange={setDiagramCode}
             isDarkMode={isDarkMode}
           />
-          <AiPromptPanel
-            onGenerate={(prompt) => handleAiGenerate(prompt)}
-            isLoading={isAiLoading}
-            currentCode={diagramCode}
-          />
         </div>
 
-        {/* Right Side: Interactive Diagram Canvas */}
+        {/* Right Side: Interactive Canvas with Floating AI Copilot Action Bar */}
         <DiagramCanvas
           code={diagramCode}
           isDarkMode={isDarkMode}
           onFixWithAi={handleFixWithAi}
           onSvgRendered={setLastSvgContent}
-        />
+          isEditorOpen={isEditorOpen}
+          onToggleEditor={() => setIsEditorOpen(!isEditorOpen)}
+        >
+          <AiPromptPanel
+            onGenerate={(prompt) => handleAiGenerate(prompt)}
+            isLoading={isAiLoading}
+            currentCode={diagramCode}
+          />
+        </DiagramCanvas>
       </main>
     </div>
   );

@@ -11,10 +11,10 @@ interface AiPromptPanelProps {
 
 const QUICK_PILLS = [
   '⚡ Add Cache Layer',
-  '🛡️ Add Error Handling & Retry',
-  '🔀 Convert to Sequence Diagram',
-  '📊 Add Metrics Logging Node',
-  '🎨 Simplify & Clean Layout'
+  '🛡️ Error Handling',
+  '🔀 Sequence Diagram',
+  '📊 Metrics Node',
+  '🎨 Simplify Layout'
 ];
 
 export const AiPromptPanel: React.FC<AiPromptPanelProps> = ({
@@ -23,6 +23,7 @@ export const AiPromptPanel: React.FC<AiPromptPanelProps> = ({
   currentCode,
 }) => {
   const [inputPrompt, setInputPrompt] = useState('');
+  const [showPills, setShowPills] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -38,44 +39,10 @@ export const AiPromptPanel: React.FC<AiPromptPanelProps> = ({
   };
 
   return (
-    <div className="ai-panel">
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.825rem', fontWeight: 600, color: 'var(--text-secondary)' }}>
-          <Sparkles size={15} style={{ color: 'var(--accent-primary)' }} />
-          <span>AI Diagram Copilot</span>
-        </div>
-        <span style={{ fontSize: '0.725rem', color: 'var(--text-muted)' }}>
-          {currentCode ? 'Mode: Refactor Existing Diagram' : 'Mode: Create New Diagram'}
-        </span>
-      </div>
-
-      <form onSubmit={handleSubmit} className="ai-input-wrapper">
-        <input
-          type="text"
-          value={inputPrompt}
-          onChange={(e) => setInputPrompt(e.target.value)}
-          placeholder={
-            currentCode 
-              ? "Ask AI to edit existing diagram (e.g. 'Add Redis cache between API and DB')..."
-              : "Describe a diagram (e.g. 'Flowchart of user registration with email verification')..."
-          }
-          className="ai-input"
-          disabled={isLoading}
-        />
-        <button 
-          type="submit" 
-          disabled={isLoading || !inputPrompt.trim()} 
-          className="btn-primary"
-          style={{ minWidth: '95px', justifyContent: 'center' }}
-        >
-          {isLoading ? <Loader2 size={16} className="animate-spin" /> : <Send size={16} />}
-          <span>{isLoading ? 'Generating' : 'Generate'}</span>
-        </button>
-      </form>
-
+    <div className="floating-ai-bar">
       {/* Quick Refactoring Pills */}
-      {currentCode && (
-        <div className="quick-pills">
+      {showPills && currentCode && (
+        <div className="floating-ai-pills">
           {QUICK_PILLS.map((pill) => (
             <button
               key={pill}
@@ -89,6 +56,50 @@ export const AiPromptPanel: React.FC<AiPromptPanelProps> = ({
           ))}
         </div>
       )}
+
+      <form onSubmit={handleSubmit} className="floating-ai-input-wrapper">
+        <div className="floating-ai-icon" title="AI Diagram Copilot">
+          <Sparkles size={16} style={{ color: 'var(--accent-primary)' }} />
+        </div>
+        <input
+          type="text"
+          value={inputPrompt}
+          onChange={(e) => setInputPrompt(e.target.value)}
+          placeholder={
+            currentCode 
+              ? "Ask AI to edit diagram (e.g. 'Add Redis cache layer')..."
+              : "Describe a diagram (e.g. 'Flowchart of checkout system')..."
+          }
+          className="floating-ai-input"
+          disabled={isLoading}
+        />
+        
+        {currentCode && (
+          <button
+            type="button"
+            onClick={() => setShowPills(!showPills)}
+            className="btn-icon"
+            title="Quick Refactoring Presets"
+            style={{
+              height: '32px',
+              width: '32px',
+              color: showPills ? 'var(--accent-primary)' : 'var(--text-muted)'
+            }}
+          >
+            <Wand2 size={15} />
+          </button>
+        )}
+
+        <button 
+          type="submit" 
+          disabled={isLoading || !inputPrompt.trim()} 
+          className="btn-primary"
+          style={{ padding: '0.45rem 0.85rem', fontSize: '0.825rem', borderRadius: 'var(--radius-sm)' }}
+        >
+          {isLoading ? <Loader2 size={15} className="animate-spin" /> : <Send size={15} />}
+          <span>{isLoading ? 'Generating' : 'Generate'}</span>
+        </button>
+      </form>
     </div>
   );
 };

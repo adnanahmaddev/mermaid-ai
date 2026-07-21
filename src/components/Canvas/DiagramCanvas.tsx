@@ -5,10 +5,9 @@ import {
   ZoomIn, 
   ZoomOut, 
   RotateCcw, 
-  Maximize2, 
   AlertCircle, 
   Wand2,
-  CheckCircle2
+  PanelLeft
 } from 'lucide-react';
 import { renderMermaidSvg, parseMermaidCode } from '@/lib/mermaid-config';
 
@@ -17,13 +16,19 @@ interface DiagramCanvasProps {
   isDarkMode: boolean;
   onFixWithAi: (errorMessage: string) => void;
   onSvgRendered?: (svgString: string) => void;
+  isEditorOpen?: boolean;
+  onToggleEditor?: () => void;
+  children?: React.ReactNode;
 }
 
 export const DiagramCanvas: React.FC<DiagramCanvasProps> = ({
   code,
   isDarkMode,
   onFixWithAi,
-  onSvgRendered
+  onSvgRendered,
+  isEditorOpen = true,
+  onToggleEditor,
+  children
 }) => {
   const [svgContent, setSvgContent] = useState<string>('');
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -110,6 +115,29 @@ export const DiagramCanvas: React.FC<DiagramCanvasProps> = ({
 
   return (
     <div className="canvas-panel">
+      {/* Floating restore editor button when collapsed */}
+      {!isEditorOpen && onToggleEditor && (
+        <button
+          onClick={onToggleEditor}
+          className="btn-secondary floating-editor-toggle"
+          title="Open Code Editor"
+          style={{
+            position: 'absolute',
+            top: '1.25rem',
+            left: '1.25rem',
+            zIndex: 15,
+            boxShadow: 'var(--shadow-glow)',
+            background: 'var(--bg-glass)',
+            backdropFilter: 'blur(12px)',
+            padding: '0.45rem 0.85rem',
+            fontSize: '0.825rem'
+          }}
+        >
+          <PanelLeft size={16} />
+          <span>Show Editor</span>
+        </button>
+      )}
+
       {/* Error Notification Bar */}
       {errorMessage && (
         <div className="error-banner" style={{ margin: '1rem', zIndex: 15 }}>
@@ -139,7 +167,7 @@ export const DiagramCanvas: React.FC<DiagramCanvasProps> = ({
         onMouseLeave={handleMouseUp}
       >
         {isRendering && (
-          <div style={{ position: 'absolute', top: '1rem', right: '1rem', color: 'var(--text-muted)', fontSize: '0.8rem', display: 'flex', alignItems: 'center', gap: '0.4rem', background: 'var(--bg-glass)', padding: '0.35rem 0.75rem', borderRadius: 'var(--radius-sm)' }}>
+          <div style={{ position: 'absolute', top: '4.5rem', right: '1.25rem', color: 'var(--text-muted)', fontSize: '0.8rem', display: 'flex', alignItems: 'center', gap: '0.4rem', background: 'var(--bg-glass)', backdropFilter: 'blur(12px)', padding: '0.35rem 0.75rem', borderRadius: 'var(--radius-sm)', zIndex: 15, boxShadow: 'var(--shadow-sm)' }}>
             <div style={{ width: '12px', height: '12px', border: '2px solid var(--accent-primary)', borderTopColor: 'transparent', borderRadius: '50%', animation: 'spin 0.8s linear infinite' }} />
             Rendering...
           </div>
@@ -164,6 +192,9 @@ export const DiagramCanvas: React.FC<DiagramCanvasProps> = ({
           </div>
         ) : null}
       </div>
+
+      {/* Floating AI Action Bar */}
+      {children}
 
       {/* Glassmorphic Floating Toolbar */}
       <div className="floating-toolbar">
