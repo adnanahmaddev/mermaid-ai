@@ -70,6 +70,11 @@ export default function Home() {
     navigator.clipboard.writeText(diagramCode);
   };
 
+  // Clear Canvas Code
+  const handleClearCode = () => {
+    setDiagramCode('');
+  };
+
   // Export SVG
   const handleExportSvg = () => {
     if (!lastSvgContent) return;
@@ -117,6 +122,7 @@ export default function Home() {
         onExportSvg={handleExportSvg}
         onExportPng={handleExportPng}
         onCopyCode={handleCopyCode}
+        onClearCode={handleClearCode}
         isDarkMode={isDarkMode}
         onToggleTheme={() => setIsDarkMode(!isDarkMode)}
         diagramCode={diagramCode}
@@ -129,7 +135,18 @@ export default function Home() {
         <div className={`left-panel ${!isEditorOpen ? 'collapsed' : ''}`}>
           <div style={{ padding: '0.5rem 1rem', background: 'var(--bg-secondary)', borderBottom: '1px solid var(--border-color)', fontSize: '0.75rem', fontWeight: 600, color: 'var(--text-muted)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <span>MERMAID MARKDOWN EDITOR</span>
-            <span>LIVE SYNC ON</span>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+              {diagramCode && (
+                <button
+                  onClick={handleClearCode}
+                  style={{ background: 'transparent', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', fontSize: '0.725rem' }}
+                  title="Clear editor code"
+                >
+                  Clear
+                </button>
+              )}
+              <span>LIVE SYNC ON</span>
+            </div>
           </div>
           <CodeEditor
             value={diagramCode}

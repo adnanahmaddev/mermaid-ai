@@ -11,7 +11,8 @@ import {
   Code2, 
   FileCode2,
   PanelLeft,
-  PanelLeftClose
+  PanelLeftClose,
+  Trash2
 } from 'lucide-react';
 import { DIAGRAM_TEMPLATES, DiagramTemplate } from '@/lib/templates';
 
@@ -20,6 +21,7 @@ interface HeaderProps {
   onExportSvg: () => void;
   onExportPng: () => void;
   onCopyCode: () => void;
+  onClearCode?: () => void;
   isDarkMode: boolean;
   onToggleTheme: () => void;
   diagramCode: string;
@@ -53,6 +55,7 @@ export const Header: React.FC<HeaderProps> = ({
   onExportSvg,
   onExportPng,
   onCopyCode,
+  onClearCode,
   isDarkMode,
   onToggleTheme,
   isEditorOpen,
@@ -141,6 +144,14 @@ export const Header: React.FC<HeaderProps> = ({
           </select>
           <Layout size={14} style={{ position: 'absolute', right: '10px', top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none', color: 'var(--text-muted)' }} />
         </div>
+
+        {/* Clear Code Button */}
+        {onClearCode && (
+          <button onClick={onClearCode} className="btn-secondary" title="Clear Canvas Code">
+            <Trash2 size={16} />
+            <span>Clear</span>
+          </button>
+        )}
 
         {/* Copy Code */}
         <button onClick={handleCopy} className="btn-secondary" title="Copy Mermaid Code">
