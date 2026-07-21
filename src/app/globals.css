@@ -185,7 +185,7 @@ body {
   user-select: none;
 }
 
-.canvas-viewport svg {
+.canvas-svg-wrapper > svg {
   max-width: none !important;
   width: 100% !important;
   height: auto !important;
@@ -194,38 +194,38 @@ body {
 }
 
 /* Gantt Chart SVG Text Legibility & Contrast Overrides */
-[data-theme="dark"] .canvas-viewport svg .sectionTitle,
-.dark .canvas-viewport svg .sectionTitle {
+[data-theme="dark"] .canvas-svg-wrapper svg .sectionTitle,
+.dark .canvas-svg-wrapper svg .sectionTitle {
   fill: #f1f5f9 !important;
   font-weight: 600;
 }
 
-[data-theme="dark"] .canvas-viewport svg .grid text,
-.dark .canvas-viewport svg .grid text,
-[data-theme="dark"] .canvas-viewport svg .tick text,
-.dark .canvas-viewport svg .tick text {
+[data-theme="dark"] .canvas-svg-wrapper svg .grid text,
+.dark .canvas-svg-wrapper svg .grid text,
+[data-theme="dark"] .canvas-svg-wrapper svg .tick text,
+.dark .canvas-svg-wrapper svg .tick text {
   fill: #94a3b8 !important;
 }
 
 /* Ensure text inside task bars with light/medium backgrounds is crisp dark text */
-.canvas-viewport svg .taskText,
-.canvas-viewport svg .taskText0,
-.canvas-viewport svg .taskText1,
-.canvas-viewport svg .taskText2,
-.canvas-viewport svg .taskText3,
-.canvas-viewport svg .doneText0,
-.canvas-viewport svg .doneText1,
-.canvas-viewport svg .doneText2,
-.canvas-viewport svg .doneText3 {
+.canvas-svg-wrapper svg .taskText,
+.canvas-svg-wrapper svg .taskText0,
+.canvas-svg-wrapper svg .taskText1,
+.canvas-svg-wrapper svg .taskText2,
+.canvas-svg-wrapper svg .taskText3,
+.canvas-svg-wrapper svg .doneText0,
+.canvas-svg-wrapper svg .doneText1,
+.canvas-svg-wrapper svg .doneText2,
+.canvas-svg-wrapper svg .doneText3 {
   fill: #0f172a !important;
   font-weight: 600;
 }
 
 /* Ensure text outside task bars is bright white in dark mode */
-[data-theme="dark"] .canvas-viewport svg .taskTextOutsideRight,
-.dark .canvas-viewport svg .taskTextOutsideRight,
-[data-theme="dark"] .canvas-viewport svg .taskTextOutsideLeft,
-.dark .canvas-viewport svg .taskTextOutsideLeft {
+[data-theme="dark"] .canvas-svg-wrapper svg .taskTextOutsideRight,
+.dark .canvas-svg-wrapper svg .taskTextOutsideRight,
+[data-theme="dark"] .canvas-svg-wrapper svg .taskTextOutsideLeft,
+.dark .canvas-svg-wrapper svg .taskTextOutsideLeft {
   fill: #f8fafc !important;
 }
 
@@ -474,5 +474,13 @@ body {
   font-size: 0.9rem;
   font-weight: 500;
   color: var(--text-primary);
+}
+
+.canvas-ai-loading-card svg {
+  width: 20px !important;
+  height: 20px !important;
+  min-width: 20px !important;
+  max-width: 20px !important;
+  flex-shrink: 0 !important;
 }
 
