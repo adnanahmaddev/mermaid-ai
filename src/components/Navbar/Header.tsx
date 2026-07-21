@@ -118,13 +118,14 @@ export const Header: React.FC<HeaderProps> = ({
         </div>
       </div>
 
-      <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
         {/* Template Selector */}
         <div style={{ position: 'relative' }}>
           <select
             onChange={(e) => {
               const selected = DIAGRAM_TEMPLATES.find(t => t.id === e.target.value);
               if (selected) onSelectTemplate(selected);
+              e.target.value = "";
             }}
             defaultValue=""
             className="btn-secondary"
@@ -132,40 +133,44 @@ export const Header: React.FC<HeaderProps> = ({
               paddingRight: '1.75rem',
               appearance: 'none',
               cursor: 'pointer',
-              outline: 'none'
+              outline: 'none',
+              fontSize: '0.825rem'
             }}
           >
-            <option value="" disabled>Load Starter Template...</option>
+            <option value="" disabled>Templates...</option>
             {DIAGRAM_TEMPLATES.map((tmpl) => (
               <option key={tmpl.id} value={tmpl.id} style={{ background: 'var(--bg-secondary)', color: 'var(--text-primary)' }}>
                 {tmpl.name} ({tmpl.category})
               </option>
             ))}
           </select>
-          <Layout size={14} style={{ position: 'absolute', right: '10px', top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none', color: 'var(--text-muted)' }} />
+          <Layout size={13} style={{ position: 'absolute', right: '10px', top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none', color: 'var(--text-muted)' }} />
         </div>
 
-        {/* Clear Code Button */}
+        <div style={{ width: '1px', height: '20px', background: 'var(--border-color)', margin: '0 0.15rem' }} />
+
+        {/* Copy Code */}
+        <button onClick={handleCopy} className="btn-icon" title={copied ? "Copied!" : "Copy Mermaid Code"}>
+          {copied ? <Check size={16} color="var(--color-success)" /> : <Copy size={16} />}
+        </button>
+
+        {/* Clear Code */}
         {onClearCode && (
-          <button onClick={onClearCode} className="btn-secondary" title="Clear Canvas Code">
+          <button onClick={onClearCode} className="btn-icon" title="Clear Code">
             <Trash2 size={16} />
-            <span>Clear</span>
           </button>
         )}
 
-        {/* Copy Code */}
-        <button onClick={handleCopy} className="btn-secondary" title="Copy Mermaid Code">
-          {copied ? <Check size={16} color="var(--color-success)" /> : <Copy size={16} />}
-          <span>{copied ? 'Copied' : 'Copy Code'}</span>
-        </button>
+        <div style={{ width: '1px', height: '20px', background: 'var(--border-color)', margin: '0 0.15rem' }} />
 
         {/* Export Dropdown */}
         <div style={{ position: 'relative' }}>
           <button 
             onClick={() => setShowExportMenu(!showExportMenu)} 
             className="btn-primary"
+            style={{ padding: '0.45rem 0.85rem', fontSize: '0.825rem' }}
           >
-            <Download size={16} />
+            <Download size={15} />
             <span>Export</span>
           </button>
 
@@ -207,7 +212,7 @@ export const Header: React.FC<HeaderProps> = ({
 
         {/* Theme Toggle */}
         <button onClick={onToggleTheme} className="btn-icon" title="Toggle Light/Dark Theme">
-          {isDarkMode ? <Sun size={18} /> : <Moon size={18} />}
+          {isDarkMode ? <Sun size={17} /> : <Moon size={17} />}
         </button>
       </div>
     </header>
