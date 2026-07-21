@@ -90,29 +90,77 @@ export default function Home() {
   // Export PNG
   const handleExportPng = () => {
     if (!lastSvgContent) return;
-    const svgBlob = new Blob([lastSvgContent], { type: 'image/svg+xml;charset=utf-8' });
-    const URLObj = window.URL || window.webkitURL || window;
-    const svgUrl = URLObj.createObjectURL(svgBlob);
 
-    const img = new Image();
-    img.onload = () => {
-      const canvas = document.createElement('canvas');
-      canvas.width = img.width * 2 || 1920; // 2x resolution scale
-      canvas.height = img.height * 2 || 1080;
-      const ctx = canvas.getContext('2d');
-      if (ctx) {
-        ctx.fillStyle = isDarkMode ? '#000000' : '#ffffff';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-        const pngUrl = canvas.toDataURL('image/png');
-        const a = document.createElement('a');
-        a.href = pngUrl;
-        a.download = 'mermaid-diagram.png';
-        a.click();
+    try {
+      // Clean SVG to remove external font @import rules that taint HTML5 canvas
+      let cleanSvg = lastSvgContent.replace(/@import\s+url\([^)]+\);?/gi, '');
+
+      // Parse dimensions to ensure accurate canvas scaling
+      const parser = new DOMParser();
+      const svgDoc = parser.parseFromString(cleanSvg, 'image/svg+xml');
+      const svgEl = svgDoc.documentElement;
+
+      let width = parseFloat(svgEl.getAttribute('width') || '0');
+      let height = parseFloat(svgEl.getAttribute('height') || '0');
+
+      if (!width || !height) {
+        const viewBox = svgEl.getAttribute('viewBox');
+        if (viewBox) {
+          const parts = viewBox.split(/[\s,]+/).map(Number);
+          if (parts.length === 4) {
+            width = parts[2];
+            height = parts[3];
+          }
+        }
       }
-      URLObj.revokeObjectURL(svgUrl);
-    };
-    img.src = svgUrl;
+
+      width = width || 800;
+      height = height || 600;
+
+      svgEl.setAttribute('width', String(width));
+      svgEl.setAttribute('height', String(height));
+      cleanSvg = new XMLSerializer().serializeToString(svgDoc);
+
+      const encodedSvg = encodeURIComponent(cleanSvg);
+      const dataUrl = `data:image/svg+xml;charset=utf-8,${encodedSvg}`;
+
+      const img = new Image();
+      img.crossOrigin = 'anonymous';
+
+      img.onload = () => {
+        const scale = 2; // 2x high resolution rendering
+        const canvas = document.createElement('canvas');
+        canvas.width = (img.naturalWidth || width) * scale;
+        canvas.height = (img.naturalHeight || height) * scale;
+
+        const ctx = canvas.getContext('2d');
+        if (ctx) {
+          ctx.fillStyle = isDarkMode ? '#000000' : '#ffffff';
+          ctx.fillRect(0, 0, canvas.width, canvas.height);
+          ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+          try {
+            const pngUrl = canvas.toDataURL('image/png');
+            const a = document.createElement('a');
+            a.href = pngUrl;
+            a.download = 'mermaid-diagram.png';
+            a.click();
+          } catch (taintErr) {
+            console.error('Canvas export tainted:', taintErr);
+            handleExportSvg();
+          }
+        }
+      };
+
+      img.onerror = () => {
+        handleExportSvg();
+      };
+
+      img.src = dataUrl;
+    } catch (err) {
+      console.error('PNG conversion error:', err);
+      handleExportSvg();
+    }
   };
 
   return (
