@@ -93,12 +93,29 @@ export const DiagramCanvas: React.FC<DiagramCanvasProps> = ({
   }, [code, isDarkMode, onSvgRendered]);
 
   // Zoom controls
-  const handleZoomIn = () => setZoomScale((prev) => Math.min(prev + 0.2, 3));
-  const handleZoomOut = () => setZoomScale((prev) => Math.max(prev - 0.2, 0.4));
+  const handleZoomIn = () => setZoomScale((prev) => Math.min(prev + 0.25, 4));
+  const handleZoomOut = () => setZoomScale((prev) => Math.max(prev - 0.25, 0.3));
   const handleResetZoom = () => {
     setZoomScale(1);
     setPanPosition({ x: 0, y: 0 });
   };
+
+  // Trackpad / Scroll Wheel Zoom Handling
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const handleWheelNative = (e: WheelEvent) => {
+      e.preventDefault();
+      const zoomFactor = e.deltaY < 0 ? 1.08 : 0.92;
+      setZoomScale((prev) => Math.min(Math.max(prev * zoomFactor, 0.3), 4));
+    };
+
+    container.addEventListener('wheel', handleWheelNative, { passive: false });
+    return () => {
+      container.removeEventListener('wheel', handleWheelNative);
+    };
+  }, []);
 
   // Mouse pan handling
   const handleMouseDown = (e: React.MouseEvent) => {
@@ -199,6 +216,7 @@ export const DiagramCanvas: React.FC<DiagramCanvasProps> = ({
 
         {!errorMessage && svgContent ? (
           <div 
+            className="canvas-svg-wrapper"
             style={{
               transform: `translate(${panPosition.x}px, ${panPosition.y}px) scale(${zoomScale})`,
               transformOrigin: 'center center',
@@ -206,7 +224,9 @@ export const DiagramCanvas: React.FC<DiagramCanvasProps> = ({
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              padding: '2rem'
+              padding: '2.5rem',
+              width: '100%',
+              height: '100%'
             }}
             dangerouslySetInnerHTML={{ __html: svgContent }}
           />

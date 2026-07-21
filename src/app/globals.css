@@ -180,6 +180,19 @@ body {
   cursor: grabbing;
 }
 
+/* Enhanced SVG Diagram Sizing & Visual Clarity */
+.canvas-svg-wrapper {
+  user-select: none;
+}
+
+.canvas-viewport svg {
+  max-width: none !important;
+  width: 100% !important;
+  height: auto !important;
+  min-width: min(100%, 750px);
+  max-height: 85vh;
+}
+
 /* Floating AI Copilot Action Bar Over Canvas */
 .floating-ai-bar {
   position: absolute;

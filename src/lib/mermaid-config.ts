@@ -33,6 +33,15 @@ export function initializeMermaid(isDarkMode: boolean = true) {
     theme,
     securityLevel: 'loose',
     fontFamily: 'Inter, system-ui, -apple-system, sans-serif',
+    fontSize: 16,
+    flowchart: { useMaxWidth: false, htmlLabels: true },
+    sequence: { useMaxWidth: false },
+    gantt: { useMaxWidth: false },
+    er: { useMaxWidth: false, minEntityWidth: 120, minEntityHeight: 75, diagramPadding: 15 },
+    state: { useMaxWidth: false },
+    class: { useMaxWidth: false },
+    journey: { useMaxWidth: false },
+    mindmap: { useMaxWidth: false },
     themeVariables: isDarkMode
       ? {
           darkMode: true,
@@ -42,7 +51,8 @@ export function initializeMermaid(isDarkMode: boolean = true) {
           primaryBorderColor: '#3b82f6',
           lineColor: '#94a3b8',
           secondaryColor: '#60a5fa',
-          tertiaryColor: '#1e1e1e'
+          tertiaryColor: '#1e1e1e',
+          fontSize: '16px'
         }
       : {
           darkMode: false,
@@ -52,7 +62,8 @@ export function initializeMermaid(isDarkMode: boolean = true) {
           primaryBorderColor: '#4338ca',
           lineColor: '#64748b',
           secondaryColor: '#db2777',
-          tertiaryColor: '#f1f5f9'
+          tertiaryColor: '#f1f5f9',
+          fontSize: '16px'
         }
   });
 
@@ -89,7 +100,13 @@ export async function renderMermaidSvg(
     const sanitizedCode = autoFixMermaidCode(code);
     // Ensure clean rendering container ID
     const cleanId = `mermaid-render-${id.replace(/[^a-zA-Z0-9]/g, '')}`;
-    const { svg } = await mermaid.render(cleanId, sanitizedCode);
+    let { svg } = await mermaid.render(cleanId, sanitizedCode);
+
+    // Strip restrictive inline max-width styles injected by Mermaid so diagram scales properly to canvas
+    svg = svg.replace(/style="[^"]*max-width:\s*[^";]+;?/gi, (match) => {
+      return match.replace(/max-width:\s*[^";]+;?/gi, '');
+    });
+
     return { svg };
   } catch (err: unknown) {
     const errorMessage = err instanceof Error ? err.message : String(err);
