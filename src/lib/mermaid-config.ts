@@ -1,16 +1,17 @@
 import mermaid from 'mermaid';
 
 let isInitialized = false;
+let lastTheme: string | null = null;
 
 export function autoFixMermaidCode(code: string): string {
   if (!code) return code;
   let fixed = code;
 
-  // 1. Ensure keywords like 'section', 'subgraph' start on a new line if concatenated without newline
+  // 1. Ensure structural keywords like 'section', 'subgraph' start on a new line if concatenated without newline
   fixed = fixed.replace(/([^\n])\s*\b(section|subgraph)\b/gi, '$1\n$2');
 
-  // 2. Auto-quote unquoted square bracket node labels containing special characters like (), /, :, &, #
-  fixed = fixed.replace(/\b([A-Za-z0-9_\-]+)\[([^\]"\n]*[\(\)\/\:\&\#]+[^\]"\n]*)\]/g, (_, id, label) => {
+  // 2. Auto-quote unquoted square bracket node labels containing special characters like (), /, :, &, #, commas
+  fixed = fixed.replace(/\b([A-Za-z0-9_\-]+)\[([^\]"\n]*[\(\)\/\:\&\#\,]+[^\]"\n]*)\]/g, (_, id, label) => {
     return `${id}["${label}"]`;
   });
 
@@ -20,9 +21,16 @@ export function autoFixMermaidCode(code: string): string {
 export function initializeMermaid(isDarkMode: boolean = true) {
   if (typeof window === 'undefined') return;
 
+  const theme = isDarkMode ? 'dark' : 'default';
+
+  // Skip re-initialization if the theme hasn't changed — repeated calls to
+  // mermaid.initialize() corrupt the parser's internal token/type registry,
+  // causing "Cannot read properties of undefined (reading 'type')" errors.
+  if (isInitialized && lastTheme === theme) return;
+
   mermaid.initialize({
     startOnLoad: false,
-    theme: isDarkMode ? 'dark' : 'default',
+    theme,
     securityLevel: 'loose',
     fontFamily: 'Inter, system-ui, -apple-system, sans-serif',
     themeVariables: isDarkMode
@@ -49,10 +57,15 @@ export function initializeMermaid(isDarkMode: boolean = true) {
   });
 
   isInitialized = true;
+  lastTheme = theme;
 }
 
-export async function parseMermaidCode(code: string): Promise<{ valid: boolean; error?: string }> {
+export async function parseMermaidCode(code: string, isDarkMode: boolean = true): Promise<{ valid: boolean; error?: string }> {
   if (typeof window === 'undefined') return { valid: false, error: 'SSR environment' };
+
+  // Ensure Mermaid is initialized before parsing so the parser has a valid
+  // token registry and won't throw "Cannot read properties of undefined (reading 'type')".
+  initializeMermaid(isDarkMode);
   
   try {
     const sanitizedCode = autoFixMermaidCode(code);

@@ -60,7 +60,7 @@ export const DiagramCanvas: React.FC<DiagramCanvasProps> = ({
       setIsRendering(true);
 
       // Validate syntax first
-      const validation = await parseMermaidCode(code);
+      const validation = await parseMermaidCode(code, isDarkMode);
 
       if (!validation.valid) {
         if (isMounted && currentRenderId === renderIdRef.current) {
