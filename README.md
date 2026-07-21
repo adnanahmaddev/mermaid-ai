@@ -10,6 +10,15 @@
 
 ---
 
+## 🎬 Demo Video
+
+[![MermaidAI Studio Demo](https://img.youtube.com/vi/g5ZEcMC3170/maxresdefault.jpg)](https://youtu.be/g5ZEcMC3170)
+
+> 🎥 **[Watch the 28-Second Showcase on YouTube](https://youtu.be/g5ZEcMC3170)**
+
+---
+
+
 ## ✨ Features
 
 - 🤖 **Natural Language to Diagram**: Describe any workflow, system architecture, sequence, database schema, or mindmap in plain English to instantly generate valid Mermaid.js code.
