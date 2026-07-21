@@ -34,3 +34,8 @@ pnpm-debug.log*
 # AI Agent Local Reference Files
 AGENTS.md
 PROJECT_KNOWLEDGE.md
+
+# Media & Demo Files
+demo/
+*.mp4
+
