@@ -218,7 +218,7 @@ export const DiagramCanvas: React.FC<DiagramCanvasProps> = ({
           <div 
             className="canvas-svg-wrapper"
             style={{
-              transform: `translate(${panPosition.x}px, ${panPosition.y}px) scale(${zoomScale})`,
+              transform: `translate(${panPosition.x}px, ${panPosition.y}px) scale(${zoomScale * 0.85})`,
               transformOrigin: 'center center',
               transition: isDragging ? 'none' : 'transform 0.1s ease-out',
               display: 'flex',
