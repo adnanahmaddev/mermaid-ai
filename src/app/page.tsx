@@ -6,6 +6,7 @@ import { Header } from '@/components/Navbar/Header';
 import { DiagramCanvas } from '@/components/Canvas/DiagramCanvas';
 import { AiPromptPanel } from '@/components/AiSidebar/AiPromptPanel';
 import { DIAGRAM_TEMPLATES, DiagramTemplate } from '@/lib/templates';
+import { prepareExportableSvg } from '@/lib/mermaid-config';
 
 const CodeEditor = dynamic(
   () => import('@/components/Editor/CodeEditor').then((mod) => mod.CodeEditor),
@@ -78,7 +79,8 @@ export default function Home() {
   // Export SVG
   const handleExportSvg = () => {
     if (!lastSvgContent) return;
-    const blob = new Blob([lastSvgContent], { type: 'image/svg+xml' });
+    const formattedSvg = prepareExportableSvg(lastSvgContent, isDarkMode);
+    const blob = new Blob([formattedSvg], { type: 'image/svg+xml' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
@@ -93,7 +95,8 @@ export default function Home() {
 
     try {
       // Clean SVG to remove external font @import rules that taint HTML5 canvas
-      let cleanSvg = lastSvgContent.replace(/@import\s+url\([^)]+\);?/gi, '');
+      let cleanSvg = prepareExportableSvg(lastSvgContent, isDarkMode);
+      cleanSvg = cleanSvg.replace(/@import\s+url\([^)]+\);?/gi, '');
 
       // Parse dimensions to ensure accurate canvas scaling
       const parser = new DOMParser();

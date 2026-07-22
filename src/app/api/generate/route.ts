@@ -13,6 +13,9 @@ function autoFixMermaidCode(code: string): string {
     return `${id}["${label}"]`;
   });
 
+  // 3. Strip redundant quotes in sequence diagram actor/participant aliases (e.g. actor User as "👤 User" -> actor User as 👤 User)
+  fixed = fixed.replace(/^(\s*)(actor|participant)\s+([^\n"'\s]+)\s+as\s+["']([^"'\n]+)["']/gim, '$1$2 $3 as $4');
+
   return fixed;
 }
 
@@ -71,7 +74,7 @@ CRITICAL MERMAID 11.x SYNTAX RULES & CONSTRAINTS:
 
 6. DIAGRAM-SPECIFIC SYNTAX ACCURACY:
    - Flowcharts: Use 'flowchart TB' or 'flowchart LR'. Connections: -->, ---|text|---, -->|text|, -.->.
-   - Sequence Diagrams: Use 'sequenceDiagram'. Participants: participant P as "Participant Name". Messages: A->>B: Message. Do NOT use flowchart shape brackets ([]) in sequence messages.
+   - Sequence Diagrams: Use 'sequenceDiagram'. Participants: participant P as Participant Name (without quotes around alias). Messages: A->>B: Message. Do NOT use flowchart shape brackets ([]) in sequence messages.
    - Entity Relationship: Use 'erDiagram'. Relationships: ENTITY1 ||--o{ ENTITY2 : "places". Entities define fields inside braces: ENTITY { string id }.
    - Class Diagrams: Use 'classDiagram'. Members defined inside braces: class ClassName { +string name \n +method() }.
    - State Diagrams: Use 'stateDiagram-v2'. Transitions: [*] --> State1, State1 --> State2 : "event".

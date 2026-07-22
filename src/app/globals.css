@@ -229,6 +229,925 @@ body {
   fill: #f8fafc !important;
 }
 
+/* Unified Mermaid SVG Design System Overrides Across All Diagram Types */
+
+/* 1. Primary Node Cards (Flowcharts, Sequence Actors, ER Entities, Class Cards, State Nodes) */
+.canvas-svg-wrapper svg .node rect,
+.canvas-svg-wrapper svg .node polygon,
+.canvas-svg-wrapper svg .node circle,
+.canvas-svg-wrapper svg .actor,
+.canvas-svg-wrapper svg .classGroup,
+.canvas-svg-wrapper svg .entityBox,
+.canvas-svg-wrapper svg .stateGroup {
+  rx: 6px !important;
+  ry: 6px !important;
+  stroke-width: 1.5px !important;
+}
+
+[data-theme="dark"] .canvas-svg-wrapper svg .node rect,
+.dark .canvas-svg-wrapper svg .node rect,
+[data-theme="dark"] .canvas-svg-wrapper svg .node polygon,
+.dark .canvas-svg-wrapper svg .node polygon,
+[data-theme="dark"] .canvas-svg-wrapper svg .node circle,
+.dark .canvas-svg-wrapper svg .node circle,
+[data-theme="dark"] .canvas-svg-wrapper svg .actor,
+.dark .canvas-svg-wrapper svg .actor,
+[data-theme="dark"] .canvas-svg-wrapper svg .classGroup,
+.dark .canvas-svg-wrapper svg .classGroup,
+[data-theme="dark"] .canvas-svg-wrapper svg .entityBox,
+.dark .canvas-svg-wrapper svg .entityBox,
+[data-theme="dark"] .canvas-svg-wrapper svg .stateGroup,
+.dark .canvas-svg-wrapper svg .stateGroup {
+  fill: #1e293b !important;
+  stroke: #3b82f6 !important;
+}
+
+[data-theme="light"] .canvas-svg-wrapper svg .node rect,
+.light .canvas-svg-wrapper svg .node rect,
+[data-theme="light"] .canvas-svg-wrapper svg .node polygon,
+.light .canvas-svg-wrapper svg .node polygon,
+[data-theme="light"] .canvas-svg-wrapper svg .node circle,
+.light .canvas-svg-wrapper svg .node circle,
+[data-theme="light"] .canvas-svg-wrapper svg .actor,
+.light .canvas-svg-wrapper svg .actor,
+[data-theme="light"] .canvas-svg-wrapper svg .classGroup,
+.light .canvas-svg-wrapper svg .classGroup,
+[data-theme="light"] .canvas-svg-wrapper svg .entityBox,
+.light .canvas-svg-wrapper svg .entityBox,
+[data-theme="light"] .canvas-svg-wrapper svg .stateGroup,
+.light .canvas-svg-wrapper svg .stateGroup {
+  fill: #ffffff !important;
+  stroke: #4f46e5 !important;
+}
+
+/* 2. Node Text Typography */
+.canvas-svg-wrapper svg .node text,
+.canvas-svg-wrapper svg .node text tspan,
+.canvas-svg-wrapper svg text.actor,
+.canvas-svg-wrapper svg text.actor > tspan,
+.canvas-svg-wrapper svg .classText {
+  font-family: var(--font-sans) !important;
+  font-weight: 500 !important;
+  font-size: 13px !important;
+}
+
+[data-theme="dark"] .canvas-svg-wrapper svg .node text,
+.dark .canvas-svg-wrapper svg .node text,
+[data-theme="dark"] .canvas-svg-wrapper svg .node text tspan,
+.dark .canvas-svg-wrapper svg .node text tspan,
+[data-theme="dark"] .canvas-svg-wrapper svg text.actor,
+.dark .canvas-svg-wrapper svg text.actor,
+[data-theme="dark"] .canvas-svg-wrapper svg text.actor > tspan,
+.dark .canvas-svg-wrapper svg text.actor > tspan,
+[data-theme="dark"] .canvas-svg-wrapper svg .classText,
+.dark .canvas-svg-wrapper svg .classText,
+[data-theme="dark"] .canvas-svg-wrapper svg .node foreignObject div,
+.dark .canvas-svg-wrapper svg .node foreignObject div,
+[data-theme="dark"] .canvas-svg-wrapper svg .node foreignObject span,
+.dark .canvas-svg-wrapper svg .node foreignObject span,
+[data-theme="dark"] .canvas-svg-wrapper svg .node foreignObject p,
+.dark .canvas-svg-wrapper svg .node foreignObject p,
+[data-theme="dark"] .canvas-svg-wrapper svg .nodeLabel,
+.dark .canvas-svg-wrapper svg .nodeLabel,
+[data-theme="dark"] .canvas-svg-wrapper svg .markdown-node-label,
+.dark .canvas-svg-wrapper svg .markdown-node-label {
+  fill: #f8fafc !important;
+  color: #f8fafc !important;
+}
+
+[data-theme="light"] .canvas-svg-wrapper svg .node text,
+.light .canvas-svg-wrapper svg .node text,
+[data-theme="light"] .canvas-svg-wrapper svg .node text tspan,
+.light .canvas-svg-wrapper svg .node text tspan,
+[data-theme="light"] .canvas-svg-wrapper svg text.actor,
+.light .canvas-svg-wrapper svg text.actor,
+[data-theme="light"] .canvas-svg-wrapper svg text.actor > tspan,
+.light .canvas-svg-wrapper svg text.actor > tspan,
+[data-theme="light"] .canvas-svg-wrapper svg .classText,
+.light .canvas-svg-wrapper svg .classText,
+[data-theme="light"] .canvas-svg-wrapper svg .node foreignObject div,
+.light .canvas-svg-wrapper svg .node foreignObject div,
+[data-theme="light"] .canvas-svg-wrapper svg .node foreignObject span,
+.light .canvas-svg-wrapper svg .node foreignObject span,
+[data-theme="light"] .canvas-svg-wrapper svg .node foreignObject p,
+.light .canvas-svg-wrapper svg .node foreignObject p,
+[data-theme="light"] .canvas-svg-wrapper svg .nodeLabel,
+.light .canvas-svg-wrapper svg .nodeLabel,
+[data-theme="light"] .canvas-svg-wrapper svg .markdown-node-label,
+.light .canvas-svg-wrapper svg .markdown-node-label,
+[data-theme="light"] .canvas-svg-wrapper svg .label span,
+.light .canvas-svg-wrapper svg .label span,
+[data-theme="light"] .canvas-svg-wrapper svg .label div,
+.light .canvas-svg-wrapper svg .label div {
+  fill: #0f172a !important;
+  color: #0f172a !important;
+}
+
+/* 3. Subgraph, Cluster & Loop Control Containers */
+.canvas-svg-wrapper svg .cluster rect,
+.canvas-svg-wrapper svg .cluster polygon,
+.canvas-svg-wrapper svg .labelBox {
+  rx: 8px !important;
+  ry: 8px !important;
+  stroke-width: 1.5px !important;
+}
+
+[data-theme="dark"] .canvas-svg-wrapper svg .cluster rect,
+.dark .canvas-svg-wrapper svg .cluster rect,
+[data-theme="dark"] .canvas-svg-wrapper svg .cluster polygon,
+.dark .canvas-svg-wrapper svg .cluster polygon,
+[data-theme="dark"] .canvas-svg-wrapper svg .labelBox,
+.dark .canvas-svg-wrapper svg .labelBox {
+  fill: rgba(15, 23, 42, 0.7) !important;
+  stroke: #334155 !important;
+}
+
+[data-theme="light"] .canvas-svg-wrapper svg .cluster rect,
+.light .canvas-svg-wrapper svg .cluster rect,
+[data-theme="light"] .canvas-svg-wrapper svg .cluster polygon,
+.light .canvas-svg-wrapper svg .cluster polygon,
+[data-theme="light"] .canvas-svg-wrapper svg .labelBox,
+.light .canvas-svg-wrapper svg .labelBox {
+  fill: rgba(241, 245, 249, 0.75) !important;
+  stroke: #cbd5e1 !important;
+}
+
+/* Container Title Headers */
+[data-theme="dark"] .canvas-svg-wrapper svg .cluster-title,
+.dark .canvas-svg-wrapper svg .cluster-title,
+[data-theme="dark"] .canvas-svg-wrapper svg .cluster span,
+.dark .canvas-svg-wrapper svg .cluster span,
+[data-theme="dark"] .canvas-svg-wrapper svg .labelText,
+.dark .canvas-svg-wrapper svg .labelText,
+[data-theme="dark"] .canvas-svg-wrapper svg .labelText > tspan,
+.dark .canvas-svg-wrapper svg .labelText > tspan {
+  fill: #94a3b8 !important;
+  color: #94a3b8 !important;
+  font-family: var(--font-sans) !important;
+  font-weight: 600 !important;
+  font-size: 12px !important;
+}
+
+[data-theme="light"] .canvas-svg-wrapper svg .cluster-title,
+.light .canvas-svg-wrapper svg .cluster-title,
+[data-theme="light"] .canvas-svg-wrapper svg .cluster span,
+.light .canvas-svg-wrapper svg .cluster span,
+[data-theme="light"] .canvas-svg-wrapper svg .labelText,
+.light .canvas-svg-wrapper svg .labelText,
+[data-theme="light"] .canvas-svg-wrapper svg .labelText > tspan,
+.light .canvas-svg-wrapper svg .labelText > tspan {
+  fill: #475569 !important;
+  color: #475569 !important;
+  font-family: var(--font-sans) !important;
+  font-weight: 600 !important;
+  font-size: 12px !important;
+}
+
+/* 4. Connector Lines & Arrows Across All Diagrams */
+[data-theme="dark"] .canvas-svg-wrapper svg .edgePath path,
+.dark .canvas-svg-wrapper svg .edgePath path,
+[data-theme="dark"] .canvas-svg-wrapper svg .flowchart-link,
+.dark .canvas-svg-wrapper svg .flowchart-link,
+[data-theme="dark"] .canvas-svg-wrapper svg .messageLine0,
+.dark .canvas-svg-wrapper svg .messageLine0,
+[data-theme="dark"] .canvas-svg-wrapper svg .messageLine1,
+.dark .canvas-svg-wrapper svg .messageLine1 {
+  stroke: #60a5fa !important;
+  stroke-width: 1.5px !important;
+}
+
+[data-theme="light"] .canvas-svg-wrapper svg .edgePath path,
+.light .canvas-svg-wrapper svg .edgePath path,
+[data-theme="light"] .canvas-svg-wrapper svg .flowchart-link,
+.light .canvas-svg-wrapper svg .flowchart-link,
+[data-theme="light"] .canvas-svg-wrapper svg .messageLine0,
+.light .canvas-svg-wrapper svg .messageLine0,
+[data-theme="light"] .canvas-svg-wrapper svg .messageLine1,
+.light .canvas-svg-wrapper svg .messageLine1 {
+  stroke: #4f46e5 !important;
+  stroke-width: 1.5px !important;
+}
+
+/* Arrowhead Markers */
+[data-theme="dark"] .canvas-svg-wrapper svg [id$="-arrowhead"] path,
+.dark .canvas-svg-wrapper svg [id$="-arrowhead"] path,
+[data-theme="dark"] .canvas-svg-wrapper svg .marker,
+.dark .canvas-svg-wrapper svg .marker,
+[data-theme="dark"] .canvas-svg-wrapper svg marker path,
+.dark .canvas-svg-wrapper svg marker path {
+  fill: #60a5fa !important;
+  stroke: #60a5fa !important;
+}
+
+[data-theme="light"] .canvas-svg-wrapper svg [id$="-arrowhead"] path,
+.light .canvas-svg-wrapper svg [id$="-arrowhead"] path,
+[data-theme="light"] .canvas-svg-wrapper svg .marker,
+.light .canvas-svg-wrapper svg .marker,
+[data-theme="light"] .canvas-svg-wrapper svg marker path,
+.light .canvas-svg-wrapper svg marker path {
+  fill: #4f46e5 !important;
+  stroke: #4f46e5 !important;
+}
+
+/* 5. Lifelines & Sequence Numbers */
+[data-theme="dark"] .canvas-svg-wrapper svg .actor-line,
+.dark .canvas-svg-wrapper svg .actor-line {
+  stroke: #334155 !important;
+  stroke-width: 1.5px !important;
+  stroke-dasharray: 4 4 !important;
+}
+
+[data-theme="light"] .canvas-svg-wrapper svg .actor-line,
+.light .canvas-svg-wrapper svg .actor-line {
+  stroke: #cbd5e1 !important;
+  stroke-width: 1.5px !important;
+  stroke-dasharray: 4 4 !important;
+}
+
+[data-theme="dark"] .canvas-svg-wrapper svg .sequenceNumber,
+.dark .canvas-svg-wrapper svg .sequenceNumber {
+  fill: #ffffff !important;
+  font-weight: 700 !important;
+  font-size: 11px !important;
+}
+
+[data-theme="dark"] .canvas-svg-wrapper svg [id$="-sequencenumber"],
+.dark .canvas-svg-wrapper svg [id$="-sequencenumber"] {
+  fill: #2563eb !important;
+  stroke: #3b82f6 !important;
+  stroke-width: 1.5px !important;
+}
+
+[data-theme="light"] .canvas-svg-wrapper svg [id$="-sequencenumber"],
+.light .canvas-svg-wrapper svg [id$="-sequencenumber"] {
+  fill: #4f46e5 !important;
+  stroke: #4338ca !important;
+  stroke-width: 1.5px !important;
+}
+
+/* 6. Connector Edge Labels & Text Pills */
+.canvas-svg-wrapper svg .edgeLabel,
+.canvas-svg-wrapper svg .messageText {
+  font-family: var(--font-sans) !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+}
+
+[data-theme="dark"] .canvas-svg-wrapper svg .edgeLabel,
+.dark .canvas-svg-wrapper svg .edgeLabel,
+[data-theme="dark"] .canvas-svg-wrapper svg .edgeLabel p,
+.dark .canvas-svg-wrapper svg .edgeLabel p,
+[data-theme="dark"] .canvas-svg-wrapper svg .edgeLabel text,
+.dark .canvas-svg-wrapper svg .edgeLabel text,
+[data-theme="dark"] .canvas-svg-wrapper svg .edgeLabel span,
+.dark .canvas-svg-wrapper svg .edgeLabel span,
+[data-theme="dark"] .canvas-svg-wrapper svg .messageText,
+.dark .canvas-svg-wrapper svg .messageText {
+  color: #e2e8f0 !important;
+  fill: #e2e8f0 !important;
+}
+
+[data-theme="dark"] .canvas-svg-wrapper svg .edgeLabel rect,
+.dark .canvas-svg-wrapper svg .edgeLabel rect,
+[data-theme="dark"] .canvas-svg-wrapper svg .edgeLabel polygon,
+.dark .canvas-svg-wrapper svg .edgeLabel polygon {
+  fill: #0f172a !important;
+  stroke: #334155 !important;
+  rx: 4px !important;
+  ry: 4px !important;
+}
+
+[data-theme="light"] .canvas-svg-wrapper svg .edgeLabel,
+.light .canvas-svg-wrapper svg .edgeLabel,
+[data-theme="light"] .canvas-svg-wrapper svg .edgeLabel p,
+.light .canvas-svg-wrapper svg .edgeLabel p,
+[data-theme="light"] .canvas-svg-wrapper svg .edgeLabel text,
+.light .canvas-svg-wrapper svg .edgeLabel text,
+[data-theme="light"] .canvas-svg-wrapper svg .edgeLabel span,
+.light .canvas-svg-wrapper svg .edgeLabel span,
+[data-theme="light"] .canvas-svg-wrapper svg .messageText,
+.light .canvas-svg-wrapper svg .messageText {
+  color: #0f172a !important;
+  fill: #0f172a !important;
+  font-weight: 600 !important;
+}
+
+[data-theme="light"] .canvas-svg-wrapper svg .edgeLabel rect,
+.light .canvas-svg-wrapper svg .edgeLabel rect,
+[data-theme="light"] .canvas-svg-wrapper svg .edgeLabel polygon,
+.light .canvas-svg-wrapper svg .edgeLabel polygon {
+  fill: #ffffff !important;
+  stroke: #cbd5e1 !important;
+  rx: 4px !important;
+  ry: 4px !important;
+}
+
+/* 7. Mindmap Diagram Styling & HTML Text Readability */
+.canvas-svg-wrapper svg path.node-bkg,
+.canvas-svg-wrapper svg circle.label-container,
+.canvas-svg-wrapper svg g.mindmap-node rect,
+.canvas-svg-wrapper svg g.mindmap-node circle,
+.canvas-svg-wrapper svg g.mindmap-node path,
+.canvas-svg-wrapper svg [class*="mindmap-node"] path,
+.canvas-svg-wrapper svg [class*="node-bkg"] {
+  rx: 8px !important;
+  ry: 8px !important;
+  stroke-width: 1.5px !important;
+}
+
+[data-theme="dark"] .canvas-svg-wrapper svg path.node-bkg,
+.dark .canvas-svg-wrapper svg path.node-bkg,
+[data-theme="dark"] .canvas-svg-wrapper svg circle.label-container,
+.dark .canvas-svg-wrapper svg circle.label-container,
+[data-theme="dark"] .canvas-svg-wrapper svg g.mindmap-node rect,
+.dark .canvas-svg-wrapper svg g.mindmap-node rect,
+[data-theme="dark"] .canvas-svg-wrapper svg g.mindmap-node circle,
+.dark .canvas-svg-wrapper svg g.mindmap-node circle,
+[data-theme="dark"] .canvas-svg-wrapper svg g.mindmap-node path,
+.dark .canvas-svg-wrapper svg g.mindmap-node path,
+[data-theme="dark"] .canvas-svg-wrapper svg [class*="mindmap-node"] path,
+.dark .canvas-svg-wrapper svg [class*="mindmap-node"] path,
+[data-theme="dark"] .canvas-svg-wrapper svg [class*="node-bkg"],
+.dark .canvas-svg-wrapper svg [class*="node-bkg"] {
+  fill: #1e293b !important;
+  stroke: #3b82f6 !important;
+  opacity: 1 !important;
+}
+
+[data-theme="light"] .canvas-svg-wrapper svg path.node-bkg,
+.light .canvas-svg-wrapper svg path.node-bkg,
+[data-theme="light"] .canvas-svg-wrapper svg circle.label-container,
+.light .canvas-svg-wrapper svg circle.label-container,
+[data-theme="light"] .canvas-svg-wrapper svg g.mindmap-node rect,
+.light .canvas-svg-wrapper svg g.mindmap-node rect,
+[data-theme="light"] .canvas-svg-wrapper svg g.mindmap-node circle,
+.light .canvas-svg-wrapper svg g.mindmap-node circle,
+[data-theme="light"] .canvas-svg-wrapper svg g.mindmap-node path,
+.light .canvas-svg-wrapper svg g.mindmap-node path,
+[data-theme="light"] .canvas-svg-wrapper svg [class*="mindmap-node"] path,
+.light .canvas-svg-wrapper svg [class*="mindmap-node"] path,
+[data-theme="light"] .canvas-svg-wrapper svg [class*="node-bkg"],
+.light .canvas-svg-wrapper svg [class*="node-bkg"] {
+  fill: #ffffff !important;
+  stroke: #4f46e5 !important;
+  opacity: 1 !important;
+}
+
+/* Mindmap HTML ForeignObject Text Overrides for all section branches */
+.canvas-svg-wrapper svg .mindmap-node foreignObject,
+.canvas-svg-wrapper svg .mindmap-node foreignObject div,
+.canvas-svg-wrapper svg .mindmap-node foreignObject span,
+.canvas-svg-wrapper svg .mindmap-node foreignObject p,
+.canvas-svg-wrapper svg .mindmap-node .nodeLabel,
+.canvas-svg-wrapper svg .mindmap-node .markdown-node-label,
+.canvas-svg-wrapper svg [class*="mindmap-node"] foreignObject *,
+.canvas-svg-wrapper svg [class*="section-"] foreignObject * {
+  font-family: var(--font-sans) !important;
+  font-weight: 600 !important;
+  font-size: 13px !important;
+}
+
+[data-theme="dark"] .canvas-svg-wrapper svg .mindmap-node foreignObject div,
+.dark .canvas-svg-wrapper svg .mindmap-node foreignObject div,
+[data-theme="dark"] .canvas-svg-wrapper svg .mindmap-node foreignObject span,
+.dark .canvas-svg-wrapper svg .mindmap-node foreignObject span,
+[data-theme="dark"] .canvas-svg-wrapper svg .mindmap-node foreignObject p,
+.dark .canvas-svg-wrapper svg .mindmap-node foreignObject p,
+[data-theme="dark"] .canvas-svg-wrapper svg .mindmap-node .nodeLabel,
+.dark .canvas-svg-wrapper svg .mindmap-node .nodeLabel,
+[data-theme="dark"] .canvas-svg-wrapper svg .mindmap-node .markdown-node-label,
+.dark .canvas-svg-wrapper svg .mindmap-node .markdown-node-label,
+[data-theme="dark"] .canvas-svg-wrapper svg [class*="mindmap-node"] foreignObject *,
+.dark .canvas-svg-wrapper svg [class*="mindmap-node"] foreignObject *,
+[data-theme="dark"] .canvas-svg-wrapper svg [class*="section-"] foreignObject *,
+.dark .canvas-svg-wrapper svg [class*="section-"] foreignObject * {
+  color: #f8fafc !important;
+  fill: #f8fafc !important;
+  opacity: 1 !important;
+}
+
+[data-theme="light"] .canvas-svg-wrapper svg .mindmap-node foreignObject div,
+.light .canvas-svg-wrapper svg .mindmap-node foreignObject div,
+[data-theme="light"] .canvas-svg-wrapper svg .mindmap-node foreignObject span,
+.light .canvas-svg-wrapper svg .mindmap-node foreignObject span,
+[data-theme="light"] .canvas-svg-wrapper svg .mindmap-node foreignObject p,
+.light .canvas-svg-wrapper svg .mindmap-node foreignObject p,
+[data-theme="light"] .canvas-svg-wrapper svg .mindmap-node .nodeLabel,
+.light .canvas-svg-wrapper svg .mindmap-node .nodeLabel,
+[data-theme="light"] .canvas-svg-wrapper svg .mindmap-node .markdown-node-label,
+.light .canvas-svg-wrapper svg .mindmap-node .markdown-node-label,
+[data-theme="light"] .canvas-svg-wrapper svg [class*="mindmap-node"] foreignObject *,
+.light .canvas-svg-wrapper svg [class*="mindmap-node"] foreignObject *,
+[data-theme="light"] .canvas-svg-wrapper svg [class*="section-"] foreignObject *,
+.light .canvas-svg-wrapper svg [class*="section-"] foreignObject * {
+  color: #0f172a !important;
+  fill: #0f172a !important;
+  opacity: 1 !important;
+}
+
+[data-theme="dark"] .canvas-svg-wrapper svg .mindmap-line,
+.dark .canvas-svg-wrapper svg .mindmap-line,
+[data-theme="dark"] .canvas-svg-wrapper svg path.mindmap-line,
+.dark .canvas-svg-wrapper svg path.mindmap-line,
+[data-theme="dark"] .canvas-svg-wrapper svg line[class*="node-line-"],
+.dark .canvas-svg-wrapper svg line[class*="node-line-"],
+[data-theme="dark"] .canvas-svg-wrapper svg path[class*="section-"],
+.dark .canvas-svg-wrapper svg path[class*="section-"],
+[data-theme="dark"] .canvas-svg-wrapper svg .mindmap-edges path,
+.dark .canvas-svg-wrapper svg .mindmap-edges path {
+  stroke: #60a5fa !important;
+  stroke-width: 2.5px !important;
+  opacity: 1 !important;
+}
+
+[data-theme="light"] .canvas-svg-wrapper svg .mindmap-line,
+.light .canvas-svg-wrapper svg .mindmap-line,
+[data-theme="light"] .canvas-svg-wrapper svg path.mindmap-line,
+.light .canvas-svg-wrapper svg path.mindmap-line,
+[data-theme="light"] .canvas-svg-wrapper svg line[class*="node-line-"],
+.light .canvas-svg-wrapper svg line[class*="node-line-"],
+[data-theme="light"] .canvas-svg-wrapper svg path[class*="section-"],
+.light .canvas-svg-wrapper svg path[class*="section-"],
+[data-theme="light"] .canvas-svg-wrapper svg .mindmap-edges path,
+.light .canvas-svg-wrapper svg .mindmap-edges path {
+  stroke: #4f46e5 !important;
+  stroke-width: 2.5px !important;
+  opacity: 1 !important;
+}
+
+/* 8. ER Diagram Entity Tables & Attribute Rows */
+.canvas-svg-wrapper svg .node.default .outer-path path,
+.canvas-svg-wrapper svg g.entityGroup .outer-path path {
+  rx: 6px !important;
+  ry: 6px !important;
+}
+
+[data-theme="dark"] .canvas-svg-wrapper svg .outer-path path[fill="#1f2020"],
+.dark .canvas-svg-wrapper svg .outer-path path[fill="#1f2020"],
+[data-theme="dark"] .canvas-svg-wrapper svg .outer-path path:first-child,
+.dark .canvas-svg-wrapper svg .outer-path path:first-child {
+  fill: #1e293b !important;
+}
+
+[data-theme="dark"] .canvas-svg-wrapper svg .outer-path path[stroke="#ccc"],
+.dark .canvas-svg-wrapper svg .outer-path path[stroke="#ccc"],
+[data-theme="dark"] .canvas-svg-wrapper svg .outer-path path:last-child,
+.dark .canvas-svg-wrapper svg .outer-path path:last-child {
+  stroke: #3b82f6 !important;
+  stroke-width: 1.5px !important;
+}
+
+[data-theme="dark"] .canvas-svg-wrapper svg .row-rect-odd path:first-child,
+.dark .canvas-svg-wrapper svg .row-rect-odd path:first-child,
+[data-theme="dark"] .canvas-svg-wrapper svg .row-rect-even path:first-child,
+.dark .canvas-svg-wrapper svg .row-rect-even path:first-child {
+  fill: #0f172a !important;
+}
+
+[data-theme="dark"] .canvas-svg-wrapper svg .row-rect-odd path:last-child,
+.dark .canvas-svg-wrapper svg .row-rect-odd path:last-child,
+[data-theme="dark"] .canvas-svg-wrapper svg .row-rect-even path:last-child,
+.dark .canvas-svg-wrapper svg .row-rect-even path:last-child,
+[data-theme="dark"] .canvas-svg-wrapper svg g.divider path,
+.dark .canvas-svg-wrapper svg g.divider path {
+  stroke: #334155 !important;
+}
+
+[data-theme="light"] .canvas-svg-wrapper svg .outer-path path[fill="#1f2020"],
+.light .canvas-svg-wrapper svg .outer-path path[fill="#1f2020"],
+[data-theme="light"] .canvas-svg-wrapper svg .outer-path path:first-child,
+.light .canvas-svg-wrapper svg .outer-path path:first-child {
+  fill: #e2e8f0 !important;
+}
+
+[data-theme="light"] .canvas-svg-wrapper svg .outer-path path[stroke="#ccc"],
+.light .canvas-svg-wrapper svg .outer-path path[stroke="#ccc"],
+[data-theme="light"] .canvas-svg-wrapper svg .outer-path path:last-child,
+.light .canvas-svg-wrapper svg .outer-path path:last-child {
+  stroke: #4f46e5 !important;
+  stroke-width: 1.5px !important;
+}
+
+[data-theme="light"] .canvas-svg-wrapper svg .row-rect-odd path:first-child,
+.light .canvas-svg-wrapper svg .row-rect-odd path:first-child,
+[data-theme="light"] .canvas-svg-wrapper svg .row-rect-even path:first-child,
+.light .canvas-svg-wrapper svg .row-rect-even path:first-child {
+  fill: #ffffff !important;
+}
+
+[data-theme="light"] .canvas-svg-wrapper svg .row-rect-odd path:last-child,
+.light .canvas-svg-wrapper svg .row-rect-odd path:last-child,
+[data-theme="light"] .canvas-svg-wrapper svg .row-rect-even path:last-child,
+.light .canvas-svg-wrapper svg .row-rect-even path:last-child,
+[data-theme="light"] .canvas-svg-wrapper svg g.divider path,
+.light .canvas-svg-wrapper svg g.divider path {
+  stroke: #cbd5e1 !important;
+}
+
+/* ER ForeignObject HTML Text Readability */
+.canvas-svg-wrapper svg g.label foreignObject,
+.canvas-svg-wrapper svg g.label foreignObject div,
+.canvas-svg-wrapper svg g.label foreignObject span,
+.canvas-svg-wrapper svg g.label foreignObject p,
+.canvas-svg-wrapper svg .attribute-name p,
+.canvas-svg-wrapper svg .attribute-type p,
+.canvas-svg-wrapper svg .attribute-keys p,
+.canvas-svg-wrapper svg .label.name p {
+  font-family: var(--font-sans) !important;
+  font-size: 13px !important;
+}
+
+[data-theme="dark"] .canvas-svg-wrapper svg g.label foreignObject div,
+.dark .canvas-svg-wrapper svg g.label foreignObject div,
+[data-theme="dark"] .canvas-svg-wrapper svg g.label foreignObject span,
+.dark .canvas-svg-wrapper svg g.label foreignObject span,
+[data-theme="dark"] .canvas-svg-wrapper svg g.label foreignObject p,
+.dark .canvas-svg-wrapper svg g.label foreignObject p,
+[data-theme="dark"] .canvas-svg-wrapper svg .attribute-name p,
+.dark .canvas-svg-wrapper svg .attribute-name p,
+[data-theme="dark"] .canvas-svg-wrapper svg .attribute-type p,
+.dark .canvas-svg-wrapper svg .attribute-type p,
+[data-theme="dark"] .canvas-svg-wrapper svg .label.name p,
+.dark .canvas-svg-wrapper svg .label.name p {
+  color: #f8fafc !important;
+  fill: #f8fafc !important;
+}
+
+[data-theme="light"] .canvas-svg-wrapper svg g.label foreignObject div,
+.light .canvas-svg-wrapper svg g.label foreignObject div,
+[data-theme="light"] .canvas-svg-wrapper svg g.label foreignObject span,
+.light .canvas-svg-wrapper svg g.label foreignObject span,
+[data-theme="light"] .canvas-svg-wrapper svg g.label foreignObject p,
+.light .canvas-svg-wrapper svg g.label foreignObject p,
+[data-theme="light"] .canvas-svg-wrapper svg .attribute-name p,
+.light .canvas-svg-wrapper svg .attribute-name p,
+[data-theme="light"] .canvas-svg-wrapper svg .attribute-type p,
+.light .canvas-svg-wrapper svg .attribute-type p,
+[data-theme="light"] .canvas-svg-wrapper svg .label.name p,
+.light .canvas-svg-wrapper svg .label.name p {
+  color: #0f172a !important;
+  fill: #0f172a !important;
+}
+
+[data-theme="dark"] .canvas-svg-wrapper svg .attribute-keys p,
+.dark .canvas-svg-wrapper svg .attribute-keys p,
+[data-theme="dark"] .canvas-svg-wrapper svg .attribute-keys span,
+.dark .canvas-svg-wrapper svg .attribute-keys span {
+  color: #60a5fa !important;
+  fill: #60a5fa !important;
+  font-weight: 700 !important;
+}
+
+[data-theme="light"] .canvas-svg-wrapper svg .attribute-keys p,
+.light .canvas-svg-wrapper svg .attribute-keys p,
+[data-theme="light"] .canvas-svg-wrapper svg .attribute-keys span,
+.light .canvas-svg-wrapper svg .attribute-keys span {
+  color: #4f46e5 !important;
+  fill: #4f46e5 !important;
+  font-weight: 700 !important;
+}
+
+[data-theme="dark"] .canvas-svg-wrapper svg .er.relationshipLine,
+.dark .canvas-svg-wrapper svg .er.relationshipLine,
+[data-theme="dark"] .canvas-svg-wrapper svg path.er,
+.dark .canvas-svg-wrapper svg path.er {
+  stroke: #60a5fa !important;
+  stroke-width: 1.5px !important;
+}
+
+[data-theme="light"] .canvas-svg-wrapper svg .er.relationshipLine,
+.light .canvas-svg-wrapper svg .er.relationshipLine,
+[data-theme="light"] .canvas-svg-wrapper svg path.er,
+.light .canvas-svg-wrapper svg path.er {
+  stroke: #4f46e5 !important;
+  stroke-width: 1.5px !important;
+}
+
+[data-theme="dark"] .canvas-svg-wrapper svg .er.relationshipLineHead,
+.dark .canvas-svg-wrapper svg .er.relationshipLineHead,
+[data-theme="dark"] .canvas-svg-wrapper svg path.er.relationshipLineHead,
+.dark .canvas-svg-wrapper svg path.er.relationshipLineHead {
+  fill: #60a5fa !important;
+  stroke: #60a5fa !important;
+}
+
+[data-theme="light"] .canvas-svg-wrapper svg .er.relationshipLineHead,
+.light .canvas-svg-wrapper svg .er.relationshipLineHead,
+[data-theme="light"] .canvas-svg-wrapper svg path.er.relationshipLineHead,
+.light .canvas-svg-wrapper svg path.er.relationshipLineHead {
+  fill: #4f46e5 !important;
+  stroke: #4f46e5 !important;
+}
+
+[data-theme="dark"] .canvas-svg-wrapper svg .er.relationshipLabelBox,
+.dark .canvas-svg-wrapper svg .er.relationshipLabelBox {
+  fill: #0f172a !important;
+  stroke: #334155 !important;
+}
+
+[data-theme="dark"] .canvas-svg-wrapper svg .er.relationshipLabel,
+.dark .canvas-svg-wrapper svg .er.relationshipLabel {
+  fill: #e2e8f0 !important;
+  font-family: var(--font-sans) !important;
+  font-size: 11px !important;
+}
+
+/* 9. Gantt Chart Task Bars, Text & Grid Theme Overrides */
+
+/* Left Axis Section Titles (e.g., "Setup & Core", "AI Integration", "Testing & Launch") */
+[data-theme="dark"] .canvas-svg-wrapper svg .sectionTitle,
+.dark .canvas-svg-wrapper svg .sectionTitle,
+[data-theme="dark"] .canvas-svg-wrapper svg text.sectionTitle,
+.dark .canvas-svg-wrapper svg text.sectionTitle,
+[data-theme="dark"] .canvas-svg-wrapper svg [class*="sectionTitle"],
+.dark .canvas-svg-wrapper svg [class*="sectionTitle"] {
+  fill: #f8fafc !important;
+  color: #f8fafc !important;
+  font-family: var(--font-sans) !important;
+  font-weight: 600 !important;
+  font-size: 13px !important;
+}
+
+[data-theme="light"] .canvas-svg-wrapper svg .sectionTitle,
+.light .canvas-svg-wrapper svg .sectionTitle,
+[data-theme="light"] .canvas-svg-wrapper svg text.sectionTitle,
+.light .canvas-svg-wrapper svg text.sectionTitle,
+[data-theme="light"] .canvas-svg-wrapper svg [class*="sectionTitle"],
+.light .canvas-svg-wrapper svg [class*="sectionTitle"] {
+  fill: #0f172a !important;
+  color: #0f172a !important;
+  font-family: var(--font-sans) !important;
+  font-weight: 600 !important;
+  font-size: 13px !important;
+}
+
+/* Task Bar Labels Inside & Outside Bars (e.g., "Project Setup", "Monaco & Canvas Config") */
+[data-theme="dark"] .canvas-svg-wrapper svg text.taskText,
+.dark .canvas-svg-wrapper svg text.taskText,
+[data-theme="dark"] .canvas-svg-wrapper svg [class*="taskText"],
+.dark .canvas-svg-wrapper svg [class*="taskText"],
+[data-theme="dark"] .canvas-svg-wrapper svg [class*="doneText"],
+.dark .canvas-svg-wrapper svg [class*="doneText"],
+[data-theme="dark"] .canvas-svg-wrapper svg [class*="activeText"],
+.dark .canvas-svg-wrapper svg [class*="activeText"] {
+  fill: #ffffff !important;
+  color: #ffffff !important;
+  font-family: var(--font-sans) !important;
+  font-weight: 600 !important;
+  font-size: 12px !important;
+}
+
+[data-theme="light"] .canvas-svg-wrapper svg text.taskText,
+.light .canvas-svg-wrapper svg text.taskText,
+[data-theme="light"] .canvas-svg-wrapper svg [class*="taskText"],
+.light .canvas-svg-wrapper svg [class*="taskText"],
+[data-theme="light"] .canvas-svg-wrapper svg [class*="doneText"],
+.light .canvas-svg-wrapper svg [class*="doneText"],
+[data-theme="light"] .canvas-svg-wrapper svg [class*="activeText"],
+.light .canvas-svg-wrapper svg [class*="activeText"] {
+  fill: #ffffff !important;
+  color: #ffffff !important;
+  font-family: var(--font-sans) !important;
+  font-weight: 600 !important;
+  font-size: 12px !important;
+}
+
+[data-theme="dark"] .canvas-svg-wrapper svg .taskTextOutsideRight,
+.dark .canvas-svg-wrapper svg .taskTextOutsideRight,
+[data-theme="dark"] .canvas-svg-wrapper svg .taskTextOutsideLeft,
+.dark .canvas-svg-wrapper svg .taskTextOutsideLeft {
+  fill: #f8fafc !important;
+  color: #f8fafc !important;
+  font-family: var(--font-sans) !important;
+  font-weight: 500 !important;
+}
+
+/* Section Row Background Fills (Left Column Rows) */
+[data-theme="dark"] .canvas-svg-wrapper svg rect.section,
+.dark .canvas-svg-wrapper svg rect.section,
+[data-theme="dark"] .canvas-svg-wrapper svg [class*="section0"],
+.dark .canvas-svg-wrapper svg [class*="section0"],
+[data-theme="dark"] .canvas-svg-wrapper svg [class*="section1"],
+.dark .canvas-svg-wrapper svg [class*="section1"],
+[data-theme="dark"] .canvas-svg-wrapper svg [class*="section2"],
+.dark .canvas-svg-wrapper svg [class*="section2"],
+[data-theme="dark"] .canvas-svg-wrapper svg [class*="section3"],
+.dark .canvas-svg-wrapper svg [class*="section3"] {
+  fill: #0f172a !important;
+  fill-opacity: 0.6 !important;
+}
+
+[data-theme="light"] .canvas-svg-wrapper svg rect.section,
+.light .canvas-svg-wrapper svg rect.section,
+[data-theme="light"] .canvas-svg-wrapper svg [class*="section0"],
+.light .canvas-svg-wrapper svg [class*="section0"],
+[data-theme="light"] .canvas-svg-wrapper svg [class*="section1"],
+.light .canvas-svg-wrapper svg [class*="section1"],
+[data-theme="light"] .canvas-svg-wrapper svg [class*="section2"],
+.light .canvas-svg-wrapper svg [class*="section2"],
+[data-theme="light"] .canvas-svg-wrapper svg [class*="section3"],
+.light .canvas-svg-wrapper svg [class*="section3"] {
+  fill: #f1f5f9 !important;
+  fill-opacity: 0.5 !important;
+}
+
+/* Timeline Date Grid Labels & Tick Marks (e.g. "2026-08-01") */
+[data-theme="dark"] .canvas-svg-wrapper svg .grid text,
+.dark .canvas-svg-wrapper svg .grid text,
+[data-theme="dark"] .canvas-svg-wrapper svg .tick text,
+.dark .canvas-svg-wrapper svg .tick text,
+[data-theme="dark"] .canvas-svg-wrapper svg g.tick text,
+.dark .canvas-svg-wrapper svg g.tick text {
+  fill: #cbd5e1 !important;
+  color: #cbd5e1 !important;
+  font-family: var(--font-sans) !important;
+  font-size: 11px !important;
+}
+
+[data-theme="light"] .canvas-svg-wrapper svg .grid text,
+.light .canvas-svg-wrapper svg .grid text,
+[data-theme="light"] .canvas-svg-wrapper svg .tick text,
+.light .canvas-svg-wrapper svg .tick text,
+[data-theme="light"] .canvas-svg-wrapper svg g.tick text,
+.light .canvas-svg-wrapper svg g.tick text {
+  fill: #475569 !important;
+  color: #475569 !important;
+  font-family: var(--font-sans) !important;
+  font-size: 11px !important;
+}
+
+[data-theme="dark"] .canvas-svg-wrapper svg .grid path,
+.dark .canvas-svg-wrapper svg .grid path,
+[data-theme="dark"] .canvas-svg-wrapper svg .grid line,
+.dark .canvas-svg-wrapper svg .grid line,
+[data-theme="dark"] .canvas-svg-wrapper svg .tick line,
+.dark .canvas-svg-wrapper svg .tick line {
+  stroke: #334155 !important;
+  stroke-width: 1px !important;
+}
+
+[data-theme="light"] .canvas-svg-wrapper svg .grid path,
+.light .canvas-svg-wrapper svg .grid path,
+[data-theme="light"] .canvas-svg-wrapper svg .grid line,
+.light .canvas-svg-wrapper svg .grid line,
+[data-theme="light"] .canvas-svg-wrapper svg .tick line,
+.light .canvas-svg-wrapper svg .tick line {
+  stroke: #e2e8f0 !important;
+  stroke-width: 1px !important;
+}
+
+/* Gantt Chart Title Text */
+[data-theme="dark"] .canvas-svg-wrapper svg text.titleText,
+.dark .canvas-svg-wrapper svg text.titleText,
+[data-theme="dark"] .canvas-svg-wrapper svg .ganttTitleText,
+.dark .canvas-svg-wrapper svg .ganttTitleText {
+  fill: #f8fafc !important;
+  color: #f8fafc !important;
+  font-family: var(--font-sans) !important;
+  font-weight: 700 !important;
+  font-size: 16px !important;
+}
+
+[data-theme="light"] .canvas-svg-wrapper svg text.titleText,
+.light .canvas-svg-wrapper svg text.titleText,
+[data-theme="light"] .canvas-svg-wrapper svg .ganttTitleText,
+.light .canvas-svg-wrapper svg .ganttTitleText {
+  fill: #0f172a !important;
+  color: #0f172a !important;
+  font-family: var(--font-sans) !important;
+  font-weight: 700 !important;
+  font-size: 16px !important;
+}
+
+/* Gantt Task Bar Colors */
+[data-theme="dark"] .canvas-svg-wrapper svg rect.task,
+.dark .canvas-svg-wrapper svg rect.task,
+[data-theme="dark"] .canvas-svg-wrapper svg [class*="task0"],
+.dark .canvas-svg-wrapper svg [class*="task0"],
+[data-theme="dark"] .canvas-svg-wrapper svg [class*="task1"],
+.dark .canvas-svg-wrapper svg [class*="task1"],
+[data-theme="dark"] .canvas-svg-wrapper svg [class*="task2"],
+.dark .canvas-svg-wrapper svg [class*="task2"],
+[data-theme="dark"] .canvas-svg-wrapper svg [class*="task3"],
+.dark .canvas-svg-wrapper svg [class*="task3"] {
+  fill: #1e293b !important;
+  stroke: #3b82f6 !important;
+  stroke-width: 1.5px !important;
+  rx: 4px !important;
+}
+
+[data-theme="light"] .canvas-svg-wrapper svg rect.task,
+.light .canvas-svg-wrapper svg rect.task,
+[data-theme="light"] .canvas-svg-wrapper svg [class*="task0"],
+.light .canvas-svg-wrapper svg [class*="task0"],
+[data-theme="light"] .canvas-svg-wrapper svg [class*="task1"],
+.light .canvas-svg-wrapper svg [class*="task1"],
+[data-theme="light"] .canvas-svg-wrapper svg [class*="task2"],
+.light .canvas-svg-wrapper svg [class*="task2"],
+[data-theme="light"] .canvas-svg-wrapper svg [class*="task3"],
+.light .canvas-svg-wrapper svg [class*="task3"] {
+  fill: #4f46e5 !important;
+  stroke: #4338ca !important;
+  stroke-width: 1.5px !important;
+  rx: 4px !important;
+}
+
+[data-theme="dark"] .canvas-svg-wrapper svg rect.active,
+.dark .canvas-svg-wrapper svg rect.active,
+[data-theme="dark"] .canvas-svg-wrapper svg [class*="active0"],
+.dark .canvas-svg-wrapper svg [class*="active0"],
+[data-theme="dark"] .canvas-svg-wrapper svg [class*="active1"],
+.dark .canvas-svg-wrapper svg [class*="active1"],
+[data-theme="dark"] .canvas-svg-wrapper svg [class*="active2"],
+.dark .canvas-svg-wrapper svg [class*="active2"],
+[data-theme="dark"] .canvas-svg-wrapper svg [class*="active3"],
+.dark .canvas-svg-wrapper svg [class*="active3"] {
+  fill: #2563eb !important;
+  stroke: #60a5fa !important;
+  stroke-width: 1.5px !important;
+  rx: 4px !important;
+}
+
+[data-theme="light"] .canvas-svg-wrapper svg rect.active,
+.light .canvas-svg-wrapper svg rect.active,
+[data-theme="light"] .canvas-svg-wrapper svg [class*="active0"],
+.light .canvas-svg-wrapper svg [class*="active0"],
+[data-theme="light"] .canvas-svg-wrapper svg [class*="active1"],
+.light .canvas-svg-wrapper svg [class*="active1"],
+[data-theme="light"] .canvas-svg-wrapper svg [class*="active2"],
+.light .canvas-svg-wrapper svg [class*="active2"],
+[data-theme="light"] .canvas-svg-wrapper svg [class*="active3"],
+.light .canvas-svg-wrapper svg [class*="active3"] {
+  fill: #2563eb !important;
+  stroke: #1d4ed8 !important;
+  stroke-width: 1.5px !important;
+  rx: 4px !important;
+}
+
+[data-theme="dark"] .canvas-svg-wrapper svg rect.done,
+.dark .canvas-svg-wrapper svg rect.done,
+[data-theme="dark"] .canvas-svg-wrapper svg [class*="done0"],
+.dark .canvas-svg-wrapper svg [class*="done0"],
+[data-theme="dark"] .canvas-svg-wrapper svg [class*="done1"],
+.dark .canvas-svg-wrapper svg [class*="done1"],
+[data-theme="dark"] .canvas-svg-wrapper svg [class*="done2"],
+.dark .canvas-svg-wrapper svg [class*="done2"],
+[data-theme="dark"] .canvas-svg-wrapper svg [class*="done3"],
+.dark .canvas-svg-wrapper svg [class*="done3"] {
+  fill: #334155 !important;
+  stroke: #475569 !important;
+  stroke-width: 1.5px !important;
+  rx: 4px !important;
+}
+
+[data-theme="light"] .canvas-svg-wrapper svg rect.done,
+.light .canvas-svg-wrapper svg rect.done,
+[data-theme="light"] .canvas-svg-wrapper svg [class*="done0"],
+.light .canvas-svg-wrapper svg [class*="done0"],
+[data-theme="light"] .canvas-svg-wrapper svg [class*="done1"],
+.light .canvas-svg-wrapper svg [class*="done1"],
+[data-theme="light"] .canvas-svg-wrapper svg [class*="done2"],
+.light .canvas-svg-wrapper svg [class*="done2"],
+[data-theme="light"] .canvas-svg-wrapper svg [class*="done3"],
+.light .canvas-svg-wrapper svg [class*="done3"] {
+  fill: #94a3b8 !important;
+  stroke: #64748b !important;
+  stroke-width: 1.5px !important;
+  rx: 4px !important;
+}
+
+[data-theme="dark"] .canvas-svg-wrapper svg rect.crit,
+.dark .canvas-svg-wrapper svg rect.crit,
+[data-theme="dark"] .canvas-svg-wrapper svg [class*="crit0"],
+.dark .canvas-svg-wrapper svg [class*="crit0"],
+[data-theme="dark"] .canvas-svg-wrapper svg [class*="crit1"],
+.dark .canvas-svg-wrapper svg [class*="crit1"],
+[data-theme="dark"] .canvas-svg-wrapper svg [class*="crit2"],
+.dark .canvas-svg-wrapper svg [class*="crit2"],
+[data-theme="dark"] .canvas-svg-wrapper svg [class*="crit3"],
+.dark .canvas-svg-wrapper svg [class*="crit3"] {
+  fill: #7f1d1d !important;
+  stroke: #ef4444 !important;
+  stroke-width: 1.5px !important;
+  rx: 4px !important;
+}
+
+[data-theme="light"] .canvas-svg-wrapper svg rect.crit,
+.light .canvas-svg-wrapper svg rect.crit,
+[data-theme="light"] .canvas-svg-wrapper svg [class*="crit0"],
+.light .canvas-svg-wrapper svg [class*="crit0"],
+[data-theme="light"] .canvas-svg-wrapper svg [class*="crit1"],
+.light .canvas-svg-wrapper svg [class*="crit1"],
+[data-theme="light"] .canvas-svg-wrapper svg [class*="crit2"],
+.light .canvas-svg-wrapper svg [class*="crit2"],
+[data-theme="light"] .canvas-svg-wrapper svg [class*="crit3"],
+.light .canvas-svg-wrapper svg [class*="crit3"] {
+  fill: #f87171 !important;
+  stroke: #ef4444 !important;
+  stroke-width: 1.5px !important;
+  rx: 4px !important;
+}
+
 /* Floating AI Copilot Action Bar Over Canvas */
 .floating-ai-bar {
   position: absolute;
