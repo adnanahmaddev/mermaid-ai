@@ -1,20 +1,20 @@
 # MermaidAI Studio 🎨🤖
 
-> An AI-powered diagram studio and interactive visual editor built with Next.js 15, Monaco Editor, Mermaid.js v11, and Google Gemini 2.5 Flash.
+> An AI-powered diagram studio and interactive visual editor built with Next.js 15, Monaco Editor, Mermaid.js v11, and Google Gemini 3.6 Flash.
 
 ![Next.js](https://img.shields.io/badge/Next.js-15.1-black?style=flat-square&logo=nextdotjs)
 ![React](https://img.shields.io/badge/React-19.0-61dafb?style=flat-square&logo=react)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.7-3178c6?style=flat-square&logo=typescript)
-![Google Gemini](https://img.shields.io/badge/Google_Gemini-2.5_Flash-8e75ff?style=flat-square&logo=googlegemini)
+![Google Gemini](https://img.shields.io/badge/Google_Gemini-3.6_Flash-8e75ff?style=flat-square&logo=googlegemini)
 ![Mermaid.js](https://img.shields.io/badge/Mermaid.js-v11.4-ff3670?style=flat-square)
 
 ---
 
 ## 🎬 Demo Video
 
-[![MermaidAI Studio Demo](https://img.youtube.com/vi/g5ZEcMC3170/maxresdefault.jpg)](https://youtu.be/g5ZEcMC3170)
+[![MermaidAI Studio Demo](https://img.youtube.com/vi/2DTG2Yz9OxU/maxresdefault.jpg)](https://youtu.be/2DTG2Yz9OxU)
 
-> 🎥 **[Watch the 28-Second Showcase on YouTube](https://youtu.be/g5ZEcMC3170)**
+> 🎥 **[Watch the Showcase Video on YouTube](https://youtu.be/2DTG2Yz9OxU)**
 
 ---
 
@@ -38,7 +38,7 @@
 |---|---|
 | **Framework** | [Next.js 15](https://nextjs.org/) (App Router) + [React 19](https://react.dev/) |
 | **Language** | [TypeScript](https://www.typescriptlang.org/) |
-| **AI Engine** | [Google Gemini 2.5 Flash](https://ai.google.dev/) via `@google/genai` |
+| **AI Engine** | [Google Gemini 3.6 Flash](https://ai.google.dev/) via `@google/genai` |
 | **Code Editor** | [@monaco-editor/react](https://github.com/suren-atoyan/monaco-react) |
 | **Diagram Engine** | [Mermaid.js v11](https://mermaid.js.org/) |
 | **Icons** | [Lucide React](https://lucide.dev/) |
@@ -56,7 +56,7 @@ MermaidAi/
 ├── PROJECT_KNOWLEDGE.md     # Technical developer & agent reference
 ├── src/
 │   ├── app/
-│   │   ├── api/generate/    # Gemini 2.5 Flash API route with server-side auto-fix
+│   │   ├── api/generate/    # Gemini 3.6 Flash API route with server-side auto-fix
 │   │   ├── globals.css      # Design system CSS tokens & theme styling
 │   │   ├── layout.tsx       # Root layout and metadata
 │   │   └── page.tsx         # Dashboard workspace & state orchestration
@@ -84,8 +84,8 @@ MermaidAi/
 
 1. **Clone the Repository**
    ```bash
-   git clone https://github.com/your-username/MermaidAi.git
-   cd MermaidAi
+   git clone https://github.com/adnanahmaddev/mermaid-ai.git
+   cd mermaid-ai
    ```
 
 2. **Install Dependencies**
